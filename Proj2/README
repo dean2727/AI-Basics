@@ -1,0 +1,8 @@
+files:
+
+STATISTICS.txt - statistics of running my Astar with H2() on the BW challenge set
+
+BWCHP/ - 45 Blocksworld Challenge Problems (in .bwp text format)
+  bwchp01.bwp
+  ...
+  bwchp45.bwp

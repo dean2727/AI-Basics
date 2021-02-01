@@ -1,0 +1,51 @@
+success! iter=33, cost=9, depth=9, max queue size=66
+move 0, pathcost=0, heuristic=11, f(n)=g(n)+h(n)=0
+
+DE
+ABC
+>>>>>>>>>>
+move 1, pathcost=1, heuristic=11, f(n)=g(n)+h(n)=12
+E
+D
+ABC
+>>>>>>>>>>
+move 2, pathcost=2, heuristic=9, f(n)=g(n)+h(n)=11
+EC
+D
+AB
+>>>>>>>>>>
+move 3, pathcost=3, heuristic=10, f(n)=g(n)+h(n)=13
+EC
+
+ABD
+>>>>>>>>>>
+move 4, pathcost=4, heuristic=9, f(n)=g(n)+h(n)=13
+E
+C
+ABD
+>>>>>>>>>>
+move 5, pathcost=5, heuristic=8, f(n)=g(n)+h(n)=13
+
+CE
+ABD
+>>>>>>>>>>
+move 6, pathcost=6, heuristic=6, f(n)=g(n)+h(n)=12
+
+CED
+AB
+>>>>>>>>>>
+move 7, pathcost=7, heuristic=5, f(n)=g(n)+h(n)=12
+B
+CED
+A
+>>>>>>>>>>
+move 8, pathcost=8, heuristic=4, f(n)=g(n)+h(n)=12
+B
+CEDA
+
+>>>>>>>>>>
+move 9, pathcost=9, heuristic=3, f(n)=g(n)+h(n)=12
+
+CEDA
+B
+>>>>>>>>>>

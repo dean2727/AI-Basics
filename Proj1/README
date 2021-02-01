@@ -1,0 +1,54 @@
+Blocksworld Problem Generator
+-----------------------------
+
+This program will generate a random initial configuration as a start
+state, with S stacks and B blocks, as specified.  Then it will apply 
+a sequence of N random moves to produce a goal state.
+
+> python blockgen.py <S:int> <B:int> <N:int>
+
+Input args: 3 integers: 
+  S: number of stacks
+  B: number of blocks
+  N: number of scrambling steps or moves 
+
+Output format:
+
+line 1: 3 integers: number of stacks S, number of blocks B, # of moves (-1 if unknown)
+line 2: separator ">>>>>>>>>>"
+next S lines: list of blocks in each stack for the start state
+separator ">>>>>>>>>>"
+next S lines: list of blocks in each stack for the goal state
+separator ">>>>>>>>>>"
+
+example:
+
+> python blockgen.py 3 5 2
+3 5 2
+>>>>>>>>>>
+A               //
+CB              // start state
+ED              //
+>>>>>>>>>>
+AB           //
+             // goal state
+EDC          // 
+>>>>>>>>>>
+
+
+In this case, there are 3 stacks and 5 blocks.  After the separator,
+the next 3 lines show the stacks for the start state written
+horizontally, which correponds to this picture:
+
+  B D
+A C E
+------
+
+After another separator, the next 3 lines show the goal state
+correponding to this configuration (with all the blocks stacked in
+order on the first stack, and the second and third stacks empty):
+
+     C
+B    D
+A    E
+------

@@ -1,0 +1,50 @@
+12/1/20 - TRI
+
+this was with Astar with heuristic H2() and MAX_ITERS=100000
+
+file        S B N     outcome    
+bwchp01.bwp 3 5 10000 success! iter=33, cost=9, depth=9, max queue size=66
+bwchp02.bwp 3 5 10000 success! iter=23, cost=7, depth=7, max queue size=54
+bwchp03.bwp 3 5 10000 success! iter=39, cost=9, depth=9, max queue size=77
+bwchp04.bwp 3 5 10000 success! iter=97, cost=11, depth=11, max queue size=153
+bwchp05.bwp 3 5 10000 success! iter=15, cost=8, depth=8, max queue size=37
+bwchp06.bwp 3 10 10000 success! iter=1312, cost=19, depth=19, max queue size=2908
+bwchp07.bwp 3 10 10000 success! iter=1585, cost=25, depth=25, max queue size=3774
+bwchp08.bwp 3 10 10000 success! iter=531, cost=17, depth=17, max queue size=1313
+bwchp09.bwp 3 10 10000 success! iter=7402, cost=25, depth=25, max queue size=15323
+bwchp10.bwp 3 10 10000 success! iter=5780, cost=27, depth=27, max queue size=13337
+bwchp11.bwp 3 20 10000 failed
+bwchp12.bwp 3 20 10000 failed
+bwchp13.bwp 3 20 10000 failed
+bwchp14.bwp 3 20 10000 failed
+bwchp15.bwp 3 20 10000 failed
+bwchp16.bwp 5 5 10000 success! iter=9, cost=4, depth=4, max queue size=58
+bwchp17.bwp 5 5 10000 success! iter=6, cost=5, depth=5, max queue size=55
+bwchp18.bwp 5 5 10000 success! iter=8, cost=4, depth=4, max queue size=36
+bwchp19.bwp 5 5 10000 success! iter=25, cost=7, depth=7, max queue size=207
+bwchp20.bwp 5 5 10000 success! iter=9, cost=6, depth=6, max queue size=90
+bwchp21.bwp 5 10 10000 success! iter=49, cost=12, depth=12, max queue size=539
+bwchp22.bwp 5 10 10000 success! iter=1950, cost=17, depth=17, max queue size=19407
+bwchp23.bwp 5 10 10000 success! iter=322, cost=15, depth=15, max queue size=3776
+bwchp24.bwp 5 10 10000 success! iter=80, cost=16, depth=16, max queue size=977
+bwchp25.bwp 5 10 10000 success! iter=134, cost=17, depth=17, max queue size=1674
+bwchp26.bwp 5 20 10000 failed
+bwchp27.bwp 5 20 10000 failed
+bwchp28.bwp 5 20 10000 success! iter=16944, cost=37, depth=37, max queue size=202219
+bwchp29.bwp 5 20 10000 failed
+bwchp30.bwp 5 20 10000 failed
+bwchp31.bwp 10 5 10000 success! iter=5, cost=4, depth=4, max queue size=104
+bwchp32.bwp 10 5 10000 success! iter=7, cost=4, depth=4, max queue size=172
+bwchp33.bwp 10 5 10000 success! iter=10, cost=4, depth=4, max queue size=282
+bwchp34.bwp 10 5 10000 success! iter=15, cost=6, depth=6, max queue size=298
+bwchp35.bwp 10 5 10000 success! iter=10, cost=5, depth=5, max queue size=272
+bwchp36.bwp 10 10 10000 success! iter=60, cost=12, depth=12, max queue size=3593
+bwchp37.bwp 10 10 10000 success! iter=38, cost=12, depth=12, max queue size=1897
+bwchp38.bwp 10 10 10000 success! iter=24, cost=14, depth=14, max queue size=1306
+bwchp39.bwp 10 10 10000 success! iter=272, cost=15, depth=15, max queue size=15018
+bwchp40.bwp 10 10 10000 success! iter=127, cost=13, depth=13, max queue size=6310
+bwchp41.bwp 10 20 10000 success! iter=180, cost=32, depth=32, max queue size=12219
+bwchp42.bwp 10 20 10000 success! iter=247, cost=31, depth=31, max queue size=16727
+bwchp43.bwp 10 20 10000 success! iter=1142, cost=33, depth=33, max queue size=64433
+bwchp44.bwp 10 20 10000 success! iter=207, cost=29, depth=29, max queue size=15035
+bwchp45.bwp 10 20 10000 success! iter=832, cost=31, depth=31, max queue size=61275

@@ -1,0 +1,283 @@
+iter=1000, agenda size=13338, curr depth=12
+iter=2000, agenda size=25874, curr depth=6
+iter=3000, agenda size=36980, curr depth=17
+iter=4000, agenda size=49191, curr depth=16
+iter=5000, agenda size=62335, curr depth=14
+iter=6000, agenda size=74566, curr depth=9
+iter=7000, agenda size=85319, curr depth=14
+iter=8000, agenda size=96089, curr depth=8
+iter=9000, agenda size=107772, curr depth=15
+iter=10000, agenda size=120458, curr depth=10
+iter=11000, agenda size=133191, curr depth=15
+iter=12000, agenda size=143461, curr depth=10
+iter=13000, agenda size=155002, curr depth=12
+iter=14000, agenda size=167721, curr depth=21
+iter=15000, agenda size=179352, curr depth=14
+iter=16000, agenda size=191558, curr depth=12
+success! iter=16944, cost=37, depth=37, max queue size=202219
+move 0, pathcost=0, heuristic=44, f(n)=g(n)+h(n)=0
+DEJM
+ACFGOP
+QR
+BHKNS
+ILT
+>>>>>>>>>>
+move 1, pathcost=1, heuristic=43, f(n)=g(n)+h(n)=44
+DEJM
+ACFGOP
+QR
+BHKNST
+IL
+>>>>>>>>>>
+move 2, pathcost=2, heuristic=41, f(n)=g(n)+h(n)=43
+DEJML
+ACFGOP
+QR
+BHKNST
+I
+>>>>>>>>>>
+move 3, pathcost=3, heuristic=39, f(n)=g(n)+h(n)=42
+DEJML
+ACFGO
+QR
+BHKNSTP
+I
+>>>>>>>>>>
+move 4, pathcost=4, heuristic=38, f(n)=g(n)+h(n)=42
+DEJMLO
+ACFG
+QR
+BHKNSTP
+I
+>>>>>>>>>>
+move 5, pathcost=5, heuristic=36, f(n)=g(n)+h(n)=41
+DEJMLOG
+ACF
+QR
+BHKNSTP
+I
+>>>>>>>>>>
+move 6, pathcost=6, heuristic=36, f(n)=g(n)+h(n)=42
+DEJMLOGI
+ACF
+QR
+BHKNSTP
+
+>>>>>>>>>>
+move 7, pathcost=7, heuristic=35, f(n)=g(n)+h(n)=42
+DEJMLOGI
+ACF
+QR
+BHKNST
+P
+>>>>>>>>>>
+move 8, pathcost=8, heuristic=34, f(n)=g(n)+h(n)=42
+DEJMLOGI
+ACF
+Q
+BHKNSTR
+P
+>>>>>>>>>>
+move 9, pathcost=9, heuristic=34, f(n)=g(n)+h(n)=43
+DEJMLOGI
+ACF
+
+BHKNSTR
+PQ
+>>>>>>>>>>
+move 10, pathcost=10, heuristic=32, f(n)=g(n)+h(n)=42
+DEJMLOGI
+AC
+F
+BHKNSTR
+PQ
+>>>>>>>>>>
+move 11, pathcost=11, heuristic=31, f(n)=g(n)+h(n)=42
+DEJMLOGI
+AC
+FQ
+BHKNSTR
+P
+>>>>>>>>>>
+move 12, pathcost=12, heuristic=30, f(n)=g(n)+h(n)=42
+DEJMLOGI
+A
+FQC
+BHKNSTR
+P
+>>>>>>>>>>
+move 13, pathcost=13, heuristic=30, f(n)=g(n)+h(n)=43
+DEJMLOGI
+
+FQC
+BHKNSTR
+PA
+>>>>>>>>>>
+move 14, pathcost=14, heuristic=29, f(n)=g(n)+h(n)=43
+DEJMLOGI
+R
+FQC
+BHKNST
+PA
+>>>>>>>>>>
+move 15, pathcost=15, heuristic=28, f(n)=g(n)+h(n)=43
+DEJMLOGI
+R
+FQC
+BHKNS
+PAT
+>>>>>>>>>>
+move 16, pathcost=16, heuristic=26, f(n)=g(n)+h(n)=42
+DEJMLOGI
+RS
+FQC
+BHKN
+PAT
+>>>>>>>>>>
+move 17, pathcost=17, heuristic=26, f(n)=g(n)+h(n)=43
+DEJMLOGI
+RS
+FQC
+BHK
+PATN
+>>>>>>>>>>
+move 18, pathcost=18, heuristic=26, f(n)=g(n)+h(n)=44
+DEJMLOGI
+RS
+FQ
+BHK
+PATNC
+>>>>>>>>>>
+move 19, pathcost=19, heuristic=25, f(n)=g(n)+h(n)=44
+DEJMLOGI
+RS
+FQK
+BH
+PATNC
+>>>>>>>>>>
+move 20, pathcost=20, heuristic=24, f(n)=g(n)+h(n)=44
+DEJMLOGI
+RSH
+FQK
+B
+PATNC
+>>>>>>>>>>
+move 21, pathcost=21, heuristic=23, f(n)=g(n)+h(n)=44
+DEJMLOGI
+RSH
+FQKB
+
+PATNC
+>>>>>>>>>>
+move 22, pathcost=22, heuristic=22, f(n)=g(n)+h(n)=44
+DEJMLOG
+RSH
+FQKB
+I
+PATNC
+>>>>>>>>>>
+move 23, pathcost=23, heuristic=21, f(n)=g(n)+h(n)=44
+DEJMLO
+RSH
+FQKB
+IG
+PATNC
+>>>>>>>>>>
+move 24, pathcost=24, heuristic=19, f(n)=g(n)+h(n)=43
+DEJML
+RSH
+FQKB
+IGO
+PATNC
+>>>>>>>>>>
+move 25, pathcost=25, heuristic=18, f(n)=g(n)+h(n)=43
+DEJM
+RSH
+FQKBL
+IGO
+PATNC
+>>>>>>>>>>
+move 26, pathcost=26, heuristic=16, f(n)=g(n)+h(n)=42
+DEJ
+RSH
+FQKBLM
+IGO
+PATNC
+>>>>>>>>>>
+move 27, pathcost=27, heuristic=15, f(n)=g(n)+h(n)=42
+DE
+RSH
+FQKBLM
+IGO
+PATNCJ
+>>>>>>>>>>
+move 28, pathcost=28, heuristic=14, f(n)=g(n)+h(n)=42
+D
+RSH
+FQKBLME
+IGO
+PATNCJ
+>>>>>>>>>>
+move 29, pathcost=29, heuristic=14, f(n)=g(n)+h(n)=43
+D
+RS
+FQKBLME
+IGOH
+PATNCJ
+>>>>>>>>>>
+move 30, pathcost=30, heuristic=13, f(n)=g(n)+h(n)=43
+
+RSD
+FQKBLME
+IGOH
+PATNCJ
+>>>>>>>>>>
+move 31, pathcost=31, heuristic=12, f(n)=g(n)+h(n)=43
+
+RSDJ
+FQKBLME
+IGOH
+PATNC
+>>>>>>>>>>
+move 32, pathcost=32, heuristic=11, f(n)=g(n)+h(n)=43
+
+RSDJC
+FQKBLME
+IGOH
+PATN
+>>>>>>>>>>
+move 33, pathcost=33, heuristic=9, f(n)=g(n)+h(n)=42
+
+RSDJCN
+FQKBLME
+IGOH
+PAT
+>>>>>>>>>>
+move 34, pathcost=34, heuristic=8, f(n)=g(n)+h(n)=42
+
+RSDJCNE
+FQKBLM
+IGOH
+PAT
+>>>>>>>>>>
+move 35, pathcost=35, heuristic=7, f(n)=g(n)+h(n)=42
+
+RSDJCNE
+FQKBLMT
+IGOH
+PA
+>>>>>>>>>>
+move 36, pathcost=36, heuristic=6, f(n)=g(n)+h(n)=42
+
+RSDJCNE
+FQKBLMTA
+IGOH
+P
+>>>>>>>>>>
+move 37, pathcost=37, heuristic=5, f(n)=g(n)+h(n)=42
+
+RSDJCNE
+FQKBLMTA
+IGO
+PH
+>>>>>>>>>>

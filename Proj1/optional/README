@@ -1,0 +1,6 @@
+additional Blockworld problems on which to test:
+
+ * testcase4.bwp - solution depth=7
+ * blocks1.bwp - solution depth=10 (example from the handout)
+   (blocks1.out - this is the solution path, though you might not be able to solve it with BFS)
+ *  bwchp06.bwp - solution depth=21 (won't be able to do this with BFS - should fail after MAX iterations)

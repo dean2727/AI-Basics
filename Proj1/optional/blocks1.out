@@ -1,0 +1,58 @@
+iter=1000, agenda size=553, curr depth=7
+iter=2000, agenda size=393, curr depth=9
+success! iter=2389, depth=10, max queue size=644
+move 0
+D
+CA
+BE
+>>>>>>>>>>
+move 1
+
+CA
+BED
+>>>>>>>>>>
+move 2
+A
+C
+BED
+>>>>>>>>>>
+move 3
+A
+CD
+BE
+>>>>>>>>>>
+move 4
+A
+CDE
+B
+>>>>>>>>>>
+move 5
+AB
+CDE
+
+>>>>>>>>>>
+move 6
+AB
+CD
+E
+>>>>>>>>>>
+move 7
+AB
+C
+ED
+>>>>>>>>>>
+move 8
+ABC
+
+ED
+>>>>>>>>>>
+move 9
+ABCD
+
+E
+>>>>>>>>>>
+move 10
+ABCDE
+
+
+>>>>>>>>>>
