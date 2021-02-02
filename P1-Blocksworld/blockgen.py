@@ -3,7 +3,7 @@
 import sys,random
 
 def error(s):
-  print "error: "+s
+  print("error: "+s)
   sys.exit(-1)
   
 if len(sys.argv)!=4:
@@ -44,7 +44,7 @@ class State:
       blocks = ""
       for j in range(len(self.stacks[i])): 
         blocks += BLOCKS[self.stacks[i][j]]
-      print blocks
+      print(blocks)
   # returns a new state (i.e. a copy that is modified)
   def random_move(self):
     newstate = self.copy()
@@ -64,9 +64,9 @@ state = init
 for i in range(N): state = state.random_move()
 goal = state
 
-print "%s %s %s" % (S,B,N)
-print ">>>>>>>>>>"
+print("%s %s %s" % (S,B,N))
+print(">>>>>>>>>>")
 init.print_()
-print ">>>>>>>>>>"
+print(">>>>>>>>>>")
 goal.print_()
-print ">>>>>>>>>>"
+print(">>>>>>>>>>")
