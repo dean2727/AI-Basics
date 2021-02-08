@@ -17,11 +17,14 @@
 class Node {
 public:
     State* state;
+    Node* parent;
 
     bool goalTest(State* state);
     vector<Node*> successors();
     string hash();
     int printPath();
+
+    Node()
 private:
 
 };
