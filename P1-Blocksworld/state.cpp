@@ -62,7 +62,10 @@ void State::print() {
 
 // Output whether 2 states are equal, for goal-testing
 bool State::match(State* state) {
-
+    if (this -> hash() == state -> hash()) {
+        return true;
+    }
+    return false;
 }
 
 // Generate a “key” unique to each state for tracking visited nodes
@@ -80,8 +83,43 @@ string State::hash() {
 }
 
 // Generate all children of this state given all legal moves
-vector<State*> successors() {
+vector<State*> State::successors() {
+    vector<State*> newStates;
 
+    // for each stack, take a block off and put it in all other stacks (one new state per put)
+    for (int i = 0; i < blockConfig.size(); i++) {
+        vector<char> thisStack = blockConfig[i];
+
+        // needs to have at least 1 block
+        if (!thisStack.empty()) {
+            char blockOff = thisStack.back();
+            thisStack.pop_back();
+
+            int count = 1, idx = i + 1;
+            while (count != blockConfig.size()) {
+                // need to reinitialize the stacksForNewState each time so the previous stack change is reset
+                vector<vector<char> > stacksForNewState = blockConfig;
+                stacksForNewState[i] = thisStack;  // the stack with the popped block remains common across all new states
+                
+                // may need to loop back around to the beginning of the stacks vector
+                if (idx == blockConfig.size()) {
+                    idx = 0;
+                }
+
+                // retrieve the correct stack, place the block on it, update the stack, and create new state
+                vector<char> stackWithNewBlock = blockConfig[idx];
+                stackWithNewBlock.push_back(blockOff);
+                stacksForNewState[idx] = stackWithNewBlock;
+                State newState(stacksForNewState);
+
+                newStates.push_back(&newState);
+                count++;
+                idx++;
+            }
+        }
+    }
+
+    return newStates;
 }
 
 #endif

@@ -8,7 +8,7 @@
  * Date: 02/15/2021
  * *****************************/
 
-//#include "node.hpp"
+#include "node.hpp"
 #include "state.hpp"
 #include <unordered_map>
 #include <queue>
@@ -61,39 +61,45 @@ void tokenize(string const &str, const char delim, vector<int> &out)
  * Time complexity: O(b^d) (where b = branching factor, d = depth)
  * Space complexity: O(b^d)
  * *****************************/
-// Node* breadthFirstSearch(Node* currentNode, State* finalState) {
-//     if (currentNode -> goalTest(finalState)) {
-//         return currentNode;
-//     }
+Node* breadthFirstSearch(Node* initNode, State* finalState) {
+    if (initNode -> goalTest(finalState)) {
+        return initNode;
+    }
 
-//     queue<Node*> frontier;
-//     frontier.push(currentNode);
+    queue<Node*> frontier;
+    frontier.push(initNode);
 
-//     // Track the node states in a hash table
-//     unordered_map<string, int> reached;
-//     reached.insert(currentNode -> state -> hash());
+    // Track the node states in a hash table
+    unordered_map<string, int> reached;
+    reached[initNode -> state -> hash()] = 1;
     
-//     int i = 0;
-//     while (!frontier.empty() && i < MAX_ITERS) {
-//         currentNode = frontier.pop();
+    int i = 0;
+    Node* currentNode;
+    while (!frontier.empty() && i < MAX_ITERS) {
+        currentNode = frontier.front();
+        frontier.pop();
 
-//         for (Node* child : expand(currentNode)) {
-//             State* childState = child -> state;
+        vector<Node*> successors = currentNode -> successors();
+        for (int i = 0; i < successors.size(); i++) {
+            State* childState = successors[i] -> state;
 
-//             if (childState -> match(finalState)) {
-//                 return child;
-//             }
+            if (childState -> match(finalState)) {
+                return successors[i];
+            }
 
-//             if (reached.find(childState -> hash()) == reached.end()) {
-//                 reached.insert(childState -> hash());
-//                 frontier.push(child);
-//             }
-//         }
-//         i++;
-//     }
+            // if the node has not been reached yet, add to frontier
+            if (reached.find(childState -> hash()) == reached.end()) {
+                reached[childState -> hash()] = 1;
+                frontier.push(successors[i]);
+            }
+        }
 
-//     return failure;
-// }
+        i++;
+    }
+
+    // failure indicated by returning initial node
+    return initNode;
+}
 
 
 /********************************
@@ -149,6 +155,13 @@ int main(int argc, char* argv[]) {
 
     // initialize new states
     State initState(initStateStacks);
-    State finalState(initStateStacks);
+    State finalState(finalStateStacks);
+    
+    // initialize the starting node in the search space with the initial state and null for parent
+    Node startNode(nullptr, &initState);
 
+    // start the search
+    Node* goalNode = breadthFirstSearch(&startNode, &finalState);
+
+    // print out the path
 }

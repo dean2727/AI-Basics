@@ -13,20 +13,21 @@
 #include "state.hpp"
 #include <vector>
 #include <string>
+#include <stack>
 
 class Node {
 public:
     State* state;
     Node* parent;
 
-    bool goalTest(State* state);
+    bool goalTest(State* otherState);
     vector<Node*> successors();
     string hash();
     int printPath();
 
-    Node()
+    Node(Node* p, State* s);
 private:
-
+    static int depth;
 };
 
 #endif
