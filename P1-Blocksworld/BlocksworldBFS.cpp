@@ -9,7 +9,7 @@
  * *****************************/
 
 //#include "node.hpp"
-//#include "state.hpp"
+#include "state.hpp"
 #include <unordered_map>
 #include <queue>
 #include <iostream>
@@ -115,30 +115,40 @@ int main(int argc, char* argv[]) {
     S = firstLineTokens[0];
     B = firstLineTokens[1];
     N = firstLineTokens[2];
+    
+    vector<vector<char> > initStateStacks;
+    vector<vector<char> > finalStateStacks;
 
     // continue reading the file, getting the initial and final state of the problem
     getline(ifs, line);  // >>>>>>>>>>
-    string initState = "", finalState = "";
     for (int i = 0; i < S; i++) {
         getline(ifs, line);
-        if (line == "") {
-            initState += "-;";
+        vector<char> stack;
+
+        if (line != "") {
+            for (int j = 0; j < line.length(); j++) {
+                stack.push_back(line[j]);
+            }
         }
-        else {
-            initState += line + ";";
-        }
+        initStateStacks.push_back(stack);
     }
     getline(ifs, line);  // >>>>>>>>>>
     for (int i = 0; i < S; i++) {
         getline(ifs, line);
-        if (line == "") {
-            finalState += "-;";
+        vector<char> stack;
+
+        if (line != "") {
+            for (int j = 0; j < line.length(); j++) {
+                stack.push_back(line[j]);
+            }
         }
-        else {
-            finalState += line + ";";
-        }
+        finalStateStacks.push_back(stack);
     }
 
-    cout << "DEBUG: initial state:\n" << initState << "\nfinal state:\n" << finalState << endl;
+    // cout << "DEBUG: initial state:\n" << initState << "\nfinal state:\n" << finalState << endl;
+
+    // initialize new states
+    State initState(initStateStacks);
+    State finalState(initStateStacks);
 
 }
