@@ -16,7 +16,7 @@ create your own randomly generated test case file using blockgen.py. Run
 "python blockgen.py <S:int> <B:int> <N:int>", where S is the number of stacks,
 B is the number of blocks, and N is the number of scrambling steps/moves, and
 redirect the output to a .bwp file. To compile, run "make". To run the program,
-run "./BlocksworldBFS <file>", where file is a .bwp file needed to set up the
+run "./BlocksworldBFS file", where file is a .bwp file needed to set up the
 problem.
 
 ## Results
