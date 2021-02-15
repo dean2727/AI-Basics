@@ -19,10 +19,14 @@ using namespace std;
 class State {
 public:
     State(const vector<vector<char> > stacks);
-    void print();
+    ~State();
+
+    void printHorizontal();  // more readable format
+    void printVertical(int move);
     bool match(State* state);
     string hash();
     vector<State*> successors();
+
 private:
     vector<vector<char> > blockConfig;
 };

@@ -1,0 +1,151 @@
+success! iter=4, depth=3, max queue size=1
+move 0
+ABC
+
+>>>>>>>>>>
+move 1
+AB
+C
+>>>>>>>>>>
+move 2
+A
+CB
+>>>>>>>>>>
+move 3
+
+CBA
+>>>>>>>>>>
+
+success! iter=990, depth=4, max queue size=729
+move 0
+BCF
+
+A
+DE
+>>>>>>>>>>
+move 1
+BCF
+
+AE
+D
+>>>>>>>>>>
+move 2
+BCF
+D
+AE
+
+>>>>>>>>>>
+move 3
+BC
+DF
+AE
+
+>>>>>>>>>>
+move 4
+B
+DFC
+AE
+
+>>>>>>>>>>
+
+iter=1000, agenda size=899, curr depth=3
+iter=2000, agenda size=1779, curr depth=3
+iter=3000, agenda size=2644, curr depth=4
+iter=4000, agenda size=3508, curr depth=4
+iter=5000, agenda size=4372, curr depth=4
+iter=6000, agenda size=5233, curr depth=4
+iter=7000, agenda size=6100, curr depth=4
+iter=8000, agenda size=6967, curr depth=4
+iter=9000, agenda size=7832, curr depth=4
+iter=10000, agenda size=8684, curr depth=4
+iter=11000, agenda size=9538, curr depth=4
+iter=12000, agenda size=10394, curr depth=4
+iter=13000, agenda size=11202, curr depth=4
+iter=14000, agenda size=12053, curr depth=4
+iter=15000, agenda size=12902, curr depth=4
+iter=16000, agenda size=13759, curr depth=5
+iter=17000, agenda size=14587, curr depth=5
+iter=18000, agenda size=15420, curr depth=5
+iter=19000, agenda size=16256, curr depth=5
+iter=20000, agenda size=17069, curr depth=5
+iter=21000, agenda size=17883, curr depth=5
+iter=22000, agenda size=18709, curr depth=5
+iter=23000, agenda size=19534, curr depth=5
+iter=24000, agenda size=20362, curr depth=5
+iter=25000, agenda size=21208, curr depth=5
+iter=26000, agenda size=22052, curr depth=5
+iter=27000, agenda size=22890, curr depth=5
+iter=28000, agenda size=23719, curr depth=5
+iter=29000, agenda size=24551, curr depth=5
+iter=30000, agenda size=25413, curr depth=5
+iter=31000, agenda size=26250, curr depth=5
+iter=32000, agenda size=27114, curr depth=5
+iter=33000, agenda size=27960, curr depth=5
+iter=34000, agenda size=28807, curr depth=5
+iter=35000, agenda size=29634, curr depth=5
+iter=36000, agenda size=30466, curr depth=5
+iter=37000, agenda size=31298, curr depth=5
+iter=38000, agenda size=32149, curr depth=5
+iter=39000, agenda size=32987, curr depth=5
+iter=40000, agenda size=33844, curr depth=5
+iter=41000, agenda size=34679, curr depth=5
+iter=42000, agenda size=35508, curr depth=5
+iter=43000, agenda size=36336, curr depth=5
+iter=44000, agenda size=37163, curr depth=5
+iter=45000, agenda size=37991, curr depth=5
+iter=46000, agenda size=38843, curr depth=5
+iter=47000, agenda size=39657, curr depth=5
+iter=48000, agenda size=40496, curr depth=5
+iter=49000, agenda size=41327, curr depth=5
+iter=50000, agenda size=42181, curr depth=5
+iter=51000, agenda size=43034, curr depth=5
+iter=52000, agenda size=43873, curr depth=5
+iter=53000, agenda size=44712, curr depth=5
+iter=54000, agenda size=45551, curr depth=5
+iter=55000, agenda size=46387, curr depth=5
+iter=56000, agenda size=47217, curr depth=5
+iter=57000, agenda size=48061, curr depth=5
+iter=58000, agenda size=48916, curr depth=5
+success! iter=58137, depth=5, max queue size=49026
+move 0
+EGH
+AFI
+BJ
+C
+D
+>>>>>>>>>>
+move 1
+EGH
+AF
+BJ
+C
+DI
+>>>>>>>>>>
+move 2
+EGH
+A
+BJ
+C
+DIF
+>>>>>>>>>>
+move 3
+EGH
+A
+BJ
+
+DIFC
+>>>>>>>>>>
+move 4
+EGH
+
+BJ
+
+DIFCA
+>>>>>>>>>>
+move 5
+EG
+
+BJ
+
+DIFCAH
+>>>>>>>>>>

@@ -5,20 +5,12 @@
 # Date: 02/15/2021
 
 FLAGS = -Wall -c -std=c++11
-OBJECTS = BlocksworldBFS.o
-#OBJECTS = BlocksworldBFS.o node.o state.o
 
-BlocksworldBFS: $(OBJECTS)
-	g++ -o $@ $(OBJECTS)
+BlocksworldBFS: BlocksworldBFS.cpp BlocksworldBFS.o
+	g++ -o $@ BlocksworldBFS.o
 
-BlocksworldBFS.o: BlocksworldBFS.cpp #node.hpp state.hpp
-	g++ $(FLAGS) -c $<
-
-# node.o: node.cpp node.hpp
-# 	g++ $(FLAGS) -c $<
-
-# state.o: state.cpp state.hpp
-# 	g++ $(FLAGS) -c $<
+BlocksworldBFS.o: BlocksworldBFS.cpp node.cpp node.hpp state.cpp state.hpp
+	g++ $(FLAGS) $< node.cpp state.cpp
 
 clean:
 	rm -rf *.o

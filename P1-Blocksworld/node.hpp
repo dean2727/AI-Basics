@@ -24,10 +24,11 @@ public:
     vector<Node*> successors();
     string hash();
     int printPath();
+    int getDepth();
 
     Node(Node* p, State* s);
-private:
-    static int depth;
+    ~Node();
 };
 
+#include "node.cpp"
 #endif

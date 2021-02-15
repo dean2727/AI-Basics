@@ -8,7 +8,6 @@
  * Class: CSCE 420 500
  * Date: 02/15/2021
  * *****************************/
-
 #include "state.hpp"
 
 // constructor
@@ -16,11 +15,16 @@ State::State(const vector<vector<char> > stacks) {
     blockConfig = stacks;
 }
 
-// Print out the state in the horizontal format
-void State::print() {
+State::~State() {
+    delete this;
+}
+
+// Print out the state in the horizontal (slightly more readable) format
+void State::printHorizontal() {
+    unsigned int i;
     // first, get max stack size in the state
     int maxStackHeight = 0, currHeight;
-    for (int i = 0; i < blockConfig.size(); i++) {
+    for (i = 0; i < blockConfig.size(); i++) {
         currHeight = blockConfig[i].size();
         if (currHeight > maxStackHeight) {
             maxStackHeight = currHeight;
@@ -29,7 +33,7 @@ void State::print() {
 
     // print out the contents from the top, down (from the right, left)
     for (int height = maxStackHeight - 1; height >= 0; height--) {
-        for (int stack = 0; stack < blockConfig.size() * 2 - 1; stack++) {
+        for (unsigned int stack = 0; stack < blockConfig.size() * 2 - 1; stack++) {
 
             // printing out a space every other column, so check if stack # is even
             if (stack % 2 == 0) {
@@ -51,13 +55,27 @@ void State::print() {
                 cout << " ";
             }
         }
-        cout << endl;
+        cout << "\n";
     }
 
-    for (int i = 0; i < blockConfig.size() * 2; i++) {
+    for (i = 0; i < blockConfig.size() * 2; i++) {
         cout << "-";
     }
-    cout << endl;
+    cout << "\n";
+}
+
+// Print out the state in the vertical format
+void State::printVertical(int move) {
+    unsigned int i, j;
+    
+    cout << "move " << move << "\n";
+    for (i = 0; i < blockConfig.size(); i++) {
+        for (j = 0; j < blockConfig[i].size(); j++) {
+            cout << blockConfig[i][j];
+        }
+        cout << "\n";
+    }
+    cout << ">>>>>>>>>>\n";
 }
 
 // Output whether 2 states are equal, for goal-testing
@@ -70,10 +88,11 @@ bool State::match(State* state) {
 
 // Generate a “key” unique to each state for tracking visited nodes
 string State::hash() {
+    unsigned int i;
     string hash = "";
 
-    for (int i = 0; i < blockConfig.size(); i++) {
-        for (int j = 0; j < blockConfig[i].size(); j++) {
+    for (i = 0; i < blockConfig.size(); i++) {
+        for (unsigned int j = 0; j < blockConfig[i].size(); j++) {
             hash += blockConfig[i][j];
         }
         hash += ';';
@@ -84,10 +103,11 @@ string State::hash() {
 
 // Generate all children of this state given all legal moves
 vector<State*> State::successors() {
+    unsigned int i;
     vector<State*> newStates;
 
     // for each stack, take a block off and put it in all other stacks (one new state per put)
-    for (int i = 0; i < blockConfig.size(); i++) {
+    for (i = 0; i < blockConfig.size(); i++) {
         vector<char> thisStack = blockConfig[i];
 
         // needs to have at least 1 block
@@ -95,7 +115,7 @@ vector<State*> State::successors() {
             char blockOff = thisStack.back();
             thisStack.pop_back();
 
-            int count = 1, idx = i + 1;
+            unsigned int count = 1, idx = i + 1;
             while (count != blockConfig.size()) {
                 // need to reinitialize the stacksForNewState each time so the previous stack change is reset
                 vector<vector<char> > stacksForNewState = blockConfig;
@@ -110,9 +130,9 @@ vector<State*> State::successors() {
                 vector<char> stackWithNewBlock = blockConfig[idx];
                 stackWithNewBlock.push_back(blockOff);
                 stacksForNewState[idx] = stackWithNewBlock;
-                State newState(stacksForNewState);
+                State* newState = new State(stacksForNewState);
 
-                newStates.push_back(&newState);
+                newStates.push_back(newState);
                 count++;
                 idx++;
             }

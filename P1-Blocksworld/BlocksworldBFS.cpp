@@ -8,14 +8,15 @@
  * Date: 02/15/2021
  * *****************************/
 
-#include "node.hpp"
 #include "state.hpp"
+#include "node.hpp"
 #include <unordered_map>
 #include <queue>
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 #define MAX_ITERS 100000
@@ -39,19 +40,6 @@ void tokenize(string const &str, const char delim, vector<int> &out)
 }
 
 /********************************
- * function expand():
- * Return the child nodes of a given node in the state
- * space tree
- * Arguments:
- * 1: the parent node
- * *****************************/
-// vector<Node*> expand(Node* parent) {
-//     vector<Node*> childNodes;
-
-//     return childNodes;
-// }
-
-/********************************
  * function BreadthFirstSearch() (pg. 77 in textbook):
  * Given a search problem for AI, perform a BFS on the state space
  * until the goal(s) state(s) is found.
@@ -68,22 +56,30 @@ Node* breadthFirstSearch(Node* initNode, State* finalState) {
 
     queue<Node*> frontier;
     frontier.push(initNode);
+    unsigned int maxFrontierSize = frontier.size();
 
     // Track the node states in a hash table
     unordered_map<string, int> reached;
     reached[initNode -> state -> hash()] = 1;
     
-    int i = 0;
+    int iters = 2;
     Node* currentNode;
-    while (!frontier.empty() && i < MAX_ITERS) {
+    while (!frontier.empty() && iters < MAX_ITERS) {
         currentNode = frontier.front();
-        frontier.pop();
 
         vector<Node*> successors = currentNode -> successors();
-        for (int i = 0; i < successors.size(); i++) {
-            State* childState = successors[i] -> state;
+        for (unsigned int i = 0; i < successors.size(); i++) {
 
+            // iterations exceeded -> return failure
+            if (iters >= MAX_ITERS) {
+                return initNode;
+            }
+
+            State* childState = successors[i] -> state;
             if (childState -> match(finalState)) {
+                cout << "success! iter=" << iters << ", ";
+                cout << "depth=" << successors[i] -> getDepth() << ", ";
+                cout << "max queue size=" << maxFrontierSize << "\n";
                 return successors[i];
             }
 
@@ -91,10 +87,21 @@ Node* breadthFirstSearch(Node* initNode, State* finalState) {
             if (reached.find(childState -> hash()) == reached.end()) {
                 reached[childState -> hash()] = 1;
                 frontier.push(successors[i]);
+                iters++;
+
+                // print status every 1000 iterations
+                if (iters % 1000 == 0) {
+                    cout << "iter=" << iters << ", ";
+                    cout << "agenda size=" << frontier.size() << ", ";
+                    cout << "curr depth=" << successors[i] -> getDepth() << "\n";
+                }
             }
         }
 
-        i++;
+        frontier.pop();
+        if (frontier.size() > maxFrontierSize) {
+            maxFrontierSize = frontier.size();
+        }
     }
 
     // failure indicated by returning initial node
@@ -108,7 +115,6 @@ Node* breadthFirstSearch(Node* initNode, State* finalState) {
  ********************************/
 int main(int argc, char* argv[]) {
     char* stateFile = argv[1];
-
     ifstream ifs(stateFile);
 
     // get first line: S (number of stacks), B (number of blocks), N (number of scrambling steps/moves)
@@ -132,7 +138,7 @@ int main(int argc, char* argv[]) {
         vector<char> stack;
 
         if (line != "") {
-            for (int j = 0; j < line.length(); j++) {
+            for (unsigned int j = 0; j < line.length(); j++) {
                 stack.push_back(line[j]);
             }
         }
@@ -151,17 +157,23 @@ int main(int argc, char* argv[]) {
         finalStateStacks.push_back(stack);
     }
 
-    // cout << "DEBUG: initial state:\n" << initState << "\nfinal state:\n" << finalState << endl;
-
     // initialize new states
-    State initState(initStateStacks);
-    State finalState(finalStateStacks);
+    State* initState = new State(initStateStacks);
+    State* finalState = new State(finalStateStacks);
     
     // initialize the starting node in the search space with the initial state and null for parent
-    Node startNode(nullptr, &initState);
+    Node* startNode = new Node(nullptr, initState);
 
     // start the search
-    Node* goalNode = breadthFirstSearch(&startNode, &finalState);
+    Node* goalNode = breadthFirstSearch(startNode, finalState);
 
-    // print out the path
+    // if the goal node is just initial node, couldnt find goal state
+    if (&startNode == &goalNode) {
+        cout << "failure! could not find goal state\n";
+    }
+    
+    // else, print out the path taken
+    else {
+        goalNode -> printPath();
+    }
 }
