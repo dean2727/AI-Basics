@@ -4,7 +4,9 @@ configuration of blocks, transform this state to a desired goal state of blocks
 by finding a sequence of block moves that get us to that state. This program aims
 to do just that, where each block is a capitalized letter of the alphabet. It
 takes as input a file that specifies the initial and final states of the problem,
-and it uses the breadth-first search algorithm to find a path to the goal state.
+and it uses the A* search (best-first search) algorithm to find a path to the goal state, 
+using a heuristic function to estimate the path lenght to the goal and using a priority 
+queue to sort which states to consider next based off the heuristic score h(n)=g(n)+f(n).
 The output includes an indication of success, and if so, the number of iterations
 performed by the algorithm, the depth of the search space, and the max queue size
 encountered for the frontier nodes. Nodes represent possible states in the
