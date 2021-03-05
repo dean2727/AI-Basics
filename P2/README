@@ -1,4 +1,4 @@
-# CSCE 420 Programming Assignment #1: Blocksworld BFS Search
+# CSCE 420 Programming Assignment #2: Blocksworld A* Search with Heuristics 
 The Blocksworld problem is an AI problem defined as follows: given an initial
 configuration of blocks, transform this state to a desired goal state of blocks
 by finding a sequence of block moves that get us to that state. This program aims
@@ -26,7 +26,5 @@ own output file, redirect the output of the program into it.
 
 ## Constraints
 Currently, the algorithm halts after a max of 100,000 iterations in the algorithm.
-If this happens, then the output will indicate a failure since the goal node was
-not yet found. Additionally, the program will only be able to solve problems that
-require about 7 moves or less, since a large enough branching factor will cause
-drastic time increase.
+Because of the heuristic, the algorithm is able to solve blockworld problems with more blocks. There are always possibilities to improve the heuristic and get even better speed-up.
+For the most part, the current heuristic can solve problems with about 20 blocks.
