@@ -18,15 +18,16 @@ Node::Node(Node* p, State* s, State* g) {
     parent = p;
     state = s;
     goal = g;
+    hn = state -> heuristic(goal);
 
     // if it is our initial node, f(n) is simply the distance calculated from the heuristic
     if (parent == nullptr) {
-        fn = state -> heurstic(goal);
+        fn = 0;
     }
 
     // else, also include g(n), which is the number of states leading up to the state for this node
     else {
-        fn = getDepth() + state -> heurstic(goal);
+        fn = getDepth() + hn;  // g(n) + h(n)
     } 
 }
 
@@ -45,9 +46,10 @@ vector<Node*> Node::successors() {
     unsigned int i;
     vector<State*> successorStates = state -> successors();
     vector<Node*> successorNodes;
+    Node* successorNode;
 
     for (i = 0; i < successorStates.size(); i++) {
-        Node* successorNode = new Node(this, successorStates[i], goal);
+        successorNode = new Node(this, successorStates[i], goal);
         successorNodes.push_back(successorNode);
     }
 
@@ -61,20 +63,25 @@ string Node::hash() {
 
 // Print sequence of states from root down to this
 int Node::printPath() {
-    stack<State*> path;
-    path.push(state);
+    stack<Node*> path;
+    path.push(this);
     Node* currNode = this;
     
     // obtain the states of the parents all the way up to the very first parent
     while (currNode -> parent != nullptr) {
         currNode = currNode -> parent;
-        path.push(currNode -> state);
+        path.push(currNode);
     }
 
     // pop off from the stack, printing out the associated states
     int move = 0;
     while (!path.empty()) {
-        path.top() -> printVertical(move);
+        currNode = path.top();
+        cout << "move " << move << ", pathcost=" << currNode -> getDepth() <<
+        ", heuristic=" << currNode -> hn << ", f(n)=g(n)+h(n)=" << currNode -> fn << "\n";
+        path.top() -> state -> printVertical(move);
+        cout << ">>>>>>>>>>\n";
+
         path.pop();
         move++;
     }
@@ -89,7 +96,7 @@ int Node::getDepth() {
     // obtain the states of the parents all the way up to the very first parent
     while (currNode -> parent != nullptr) {
         currNode = currNode -> parent;
-        depth++;
+        depth += 1;
     }
 
     return depth;

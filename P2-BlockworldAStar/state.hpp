@@ -12,6 +12,8 @@
 
 #include <vector>
 #include <string>
+#include <math.h>
+#include <map>
 #include <iostream>
 
 using namespace std;
@@ -26,7 +28,8 @@ public:
     bool match(State* state);
     string hash();
     vector<State*> successors();
-    float heuristic(State& goal);
+    int heuristic(State* goal);
+    vector<vector<char> > getConfig();
 
 private:
     vector<vector<char> > blockConfig;

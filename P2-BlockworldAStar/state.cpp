@@ -34,7 +34,6 @@ void State::printHorizontal() {
     // print out the contents from the top, down (from the right, left)
     for (int height = maxStackHeight - 1; height >= 0; height--) {
         for (unsigned int stack = 0; stack < blockConfig.size() * 2 - 1; stack++) {
-
             // printing out a space every other column, so check if stack # is even
             if (stack % 2 == 0) {
                 vector<char> thisStack = blockConfig[stack / 2];
@@ -68,14 +67,12 @@ void State::printHorizontal() {
 void State::printVertical(int move) {
     unsigned int i, j;
     
-    cout << "move " << move << "\n";
     for (i = 0; i < blockConfig.size(); i++) {
         for (j = 0; j < blockConfig[i].size(); j++) {
             cout << blockConfig[i][j];
         }
         cout << "\n";
     }
-    cout << ">>>>>>>>>>\n";
 }
 
 // Output whether 2 states are equal, for goal-testing
@@ -142,10 +139,85 @@ vector<State*> State::successors() {
     return newStates;
 }
 
-// give the f(n) value for heuristic (new with A* search)
-// our heurstic is the euclidean distance between each block in the state vs the goal state
-float State::heuristic(State& goal) {
-    
+vector<vector<char> > State::getConfig() {
+    return blockConfig;
+}
+
+
+/*
+heuristics tried:
+1. euclidean distance between each block in the state vs the goal state (0 if block is in the right spot)
+2. manhatten distance
+3. sum of differences in y (stack height) for each block
+4. sum of differences in x (which stack it is) for each block
+5. add 2 for every block thats not currently directly on top of the block on which it has to be in the goal state,
+or if there is such a block below it
+6. if Block A in the goal state is supposed to be on top of Block B and under Block C and in the current state it is
+neither on top of B or under C, then add 2 to the heuristic
+7. 2x the number of blocks needing to be moved once, which are blocks that sit on blocks different than 
+what they sit on in the goal state (or has such a block below it) and 4x the number of blocks needing
+to be moved twice, which are blocks that have the correct block below it but must be moved (different stack) 
+or have moved-twice blocks somewhere below it
+*/
+
+// using h5
+int State::heuristic(State* goal) {
+    int h = 0;
+
+    vector<vector<char> > goalConfig = goal -> getConfig();
+    int thisBlockConfigSize = blockConfig.size(), goalBlockConfigSize = goalConfig.size();
+    int thisStackSize, goalStackSize;
+    // maps each block to the stack they are on
+    map<char, int> stackNums;
+
+    // maps each block in the goal state to the block that should be under it
+    map<char, char> underBlocks;
+    for (int gbcs = 0; gbcs < goalBlockConfigSize; gbcs++) {  // gcbs = goal block config stack
+        goalStackSize = goalConfig[gbcs].size();
+        for (int gb = 0; gb < goalStackSize; gb++) {  // gb = goal block
+            stackNums.insert(make_pair(goalConfig[gbcs][gb], gbcs));
+
+            // no block under it, just have a placeholder of !
+            if (gb == 0) {
+                underBlocks.insert(make_pair(goalConfig[gbcs][gb], '!'));
+            }
+            else {
+                underBlocks.insert(make_pair(goalConfig[gbcs][gb], goalConfig[gbcs][gb-1]));
+            }
+        }
+    }
+
+    char thisBlock, blockUnder;
+
+    for (int tbcs = 0; tbcs < thisBlockConfigSize; tbcs++) {  // tbcs = this block config stack
+        thisStackSize = blockConfig[tbcs].size();
+        bool badUnder = false;
+        for (int tb = 0; tb < thisStackSize; tb++) {  // tb = this block
+            thisBlock = blockConfig[tbcs][tb];
+            if (tb == 0) {
+                blockUnder = '!';
+            }
+            else {
+                blockUnder = blockConfig[tbcs][tb - 1];
+            }
+
+            if (blockUnder == '!' && stackNums[thisBlock] != tbcs) {
+                h += 2;
+                badUnder = true;
+            }
+
+            // if block under is not equal, add 2
+            else if (blockUnder != underBlocks[thisBlock]) {
+                h += 2;
+                badUnder = true;
+            }
+
+            // even if the block under is fine, if we've seen a wrong under block in the pile, add 2
+            else if (badUnder) h += 2;            
+        }
+    }
+
+    return h;
 }
 
 #endif

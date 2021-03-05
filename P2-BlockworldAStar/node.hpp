@@ -19,6 +19,10 @@ class Node {
 public:
     State* state;
     Node* parent;
+    // f(n) score
+    int fn;
+    // h(n) score (heurstic)
+    int hn;
 
     bool goalTest(State* otherState);
     vector<Node*> successors();
@@ -29,8 +33,6 @@ public:
     Node(Node* p, State* s, State* g);
     ~Node();
 private:
-    // f(n) score
-    int fn;
     State* goal;
 };
 

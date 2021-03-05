@@ -1,6 +1,6 @@
 /********************************
  * File name: BlockworldAstar.cpp
- * Description: Blockworld AI problem using breadth-first search algorithm
+ * Description: Blockworld AI problem using the A* heuristic in best-first search algorithm
  * to generate a sequence of actions to transform an initial state of blocks
  * into a goal state
  * Name: Dean Orenstein
@@ -20,11 +20,12 @@
 using namespace std;
 
 #define MAX_ITERS 100000
+//#define MAX_ITERS 30
 
-// comparator struct used by the priority queue in the algorithm, sorting by path-cost (depth) of nodes
+// comparator struct used by the priority queue in the algorithm, sorting by f(n)=g(n)+h(n)
 struct comparef {
-    bool operator() (const Node* n1, const Node* n2) {
-        return n1 -> getDepth() < n2 -> getDepth();
+    bool operator() (Node* n1, Node* n2) {
+        return n1 -> fn > n2 -> fn;
     }
 };
 
@@ -58,23 +59,29 @@ void tokenize(string const &str, const char delim, vector<int> &out)
  * 2: the goal state that we desire
  * *****************************/
 Node* bestFirstSearchAStar(Node* initNode, State* finalState) {
-    priority_queue<Node*, comparef> frontier;
+    priority_queue<Node*, vector<Node*>, comparef> frontier;
     frontier.push(initNode);
     unsigned int maxFrontierSize = frontier.size();
 
     // Track the node states in a hash table
     unordered_map<State*, Node*> reached;
-    reached[initNode -> state -> hash()] = 1;
+    reached[initNode -> state] = initNode;
     
     int iters = 2;
+    int depth;
     Node* currentNode;
     while (!frontier.empty() && iters < MAX_ITERS) {
-        currentNode = frontier.front();
+        currentNode = frontier.top();
+        //cout << "DEBUG: front of queue is node with f(n) = " << currentNode -> fn << endl;
+        // cout << "DEBUG: top of queue is:\n";
+        // cout << currentNode -> state -> printHorizontal();
         frontier.pop();
 
         if (currentNode -> goalTest(finalState)) {
+            depth = currentNode -> getDepth();
             cout << "success! iter=" << iters << ", ";
-            cout << "depth=" << currentNode -> getDepth() << ", ";
+            cout << "cost=" << depth << ", ";
+            cout << "depth=" << depth << ", ";
             cout << "max queue size=" << maxFrontierSize << "\n";
             return currentNode;
         }
@@ -94,10 +101,13 @@ Node* bestFirstSearchAStar(Node* initNode, State* finalState) {
 
             /* if the node has not been reached yet or the path cost to the child is less than the cost of 
               a different path to the same child, update the reached path and add the node to the frontier (pruning) */
-            if (reached.find(childState -> hash()) == reached.end() ||
+            if (reached.count(childState) == 0 ||
                 child -> getDepth() < reached[childState] -> getDepth()) {
                 reached[childState] = child;
+                //cout << "DEBUG: pushing node to queue with f(n) = " << child -> fn << endl;
+                //child -> state -> printHorizontal();
                 frontier.push(child);
+
                 iters++;
 
                 // print status every 1000 iterations
@@ -170,6 +180,16 @@ int main(int argc, char* argv[]) {
     // initialize new states
     State* initState = new State(initStateStacks);
     State* finalState = new State(finalStateStacks);
+
+    // testing the heuristic
+    // cout << "DEBUG: Testing heuristic between initial and goal states:\n";
+    // cout << "Initial state:\n";
+    // initState -> printHorizontal();
+    // cout << "Final state:\n";
+    // finalState -> printHorizontal();
+    // cout << "h(n) for initial state:\n";
+    // int h = initState -> heuristic(finalState);
+    // cout << "h(n) = " << h << endl;
     
     // initialize the starting node in the search space with the initial state and null for parent
     Node* startNode = new Node(nullptr, initState, finalState);
