@@ -85,8 +85,8 @@ vector<string> tokenize(string s)
   return tokens;
 }
 
+//  takes a sentence as a string, constructs an Expr object for it, and returns a pointer to it
 //  expression should have only 1 element at the top level, like "a" or "(a b)"
-
 Expr* parse(string s)
 {
   vector<string> tokens=tokenize(s);
@@ -112,6 +112,7 @@ bool Eq(Expr* a, Expr* b)
 
 //-------------------------------------
 
+// auxiliary function for reading in a whole KB file and returning a vector or expression objects
 vector<Expr*>load_kb(string fname)
 {
   vector<Expr*> KB;
@@ -139,6 +140,8 @@ void show_kb(vector<Expr*>& KB)
 
 SyntaxError::SyntaxError(string s) : runtime_error{"Syntax Error: "+s} {} 
 
+// for trying to apply an ROI to an expression for which it doesn’t apply (for example,
+// trying to apply double-negation elimination to “(not P)”)
 RuleApplicationError::RuleApplicationError(string s) : runtime_error("Rule Application Error: "+s) {} 
 
 

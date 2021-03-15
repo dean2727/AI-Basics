@@ -15,8 +15,8 @@ class Expr
 {
 public:
   EXPR_TYPE kind;
-  string sym;
-  vector<Expr*> sub;
+  string sym;  // if kind is ATOM, this is defined
+  vector<Expr*> sub;  // if kind is LIST, this is defined
   int end;
 
   Expr(string s);
