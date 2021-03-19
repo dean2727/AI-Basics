@@ -18,6 +18,7 @@
  **********************************************************************/
 
 #include "parser.hpp"
+#include "NatDed.cpp"
 using namespace std;
 
 void do_inference(vector<Expr*>& KB) {
@@ -26,8 +27,11 @@ void do_inference(vector<Expr*>& KB) {
 
 
 int main() {
-  try {
-    vector<Expr*> KB = load_KB();
-    do_inference(KB);
-  } catch (runtime_error& e) { cout << e.what() << endl; }
+    try {
+        vector<Expr*> KB = load_kb("sammys.kb");
+        do_inference(KB);
+    }
+    catch (runtime_error& e) {
+        cout << e.what() << endl;
+    }
 }

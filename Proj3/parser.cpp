@@ -13,7 +13,7 @@ using namespace std;
 
 Expr::Expr(string s) { sym = s; kind = ATOM; }
 
-Expr::Expr(vector<string> tokens,int start)
+Expr::Expr(vector<string> tokens, int start)
 {
   int i=start,n=tokens.size();
   kind = LIST; // assume there are multiple tokens, change to ATOM later
@@ -22,7 +22,7 @@ Expr::Expr(vector<string> tokens,int start)
     if (tokens[i]==")") { end = i-1; return; }
     else if (tokens[i]=="(") 
     {
-      Expr* part=new Expr(tokens,i+1); 
+      Expr* part=new Expr(tokens, i+1); 
       sub.push_back(part);
       i = part->end+1; 
       if (i>=n || tokens[i]!=")") throw SyntaxError("didn't find closing paren: "+part->toString());
@@ -61,7 +61,9 @@ string Expr::toString()
   {
     string s("(");
     int n=sub.size();
-    for (int i=0 ; i<n; i++) { s += sub[i]->toString()+(i<n-1 ? " ": ""); }
+    for (int i=0 ; i<n; i++) {
+      s += sub[i]->toString()+(i<n-1 ? " ": "");
+    }
     s += ")";
     return s;
   }
@@ -95,7 +97,7 @@ Expr* parse(string s)
   return res->sub[0];
 }
 
-// overload the operator== ?
+// overload the operator==
 
 bool Eq(Expr* a, Expr* b)
 {
@@ -138,7 +140,7 @@ void show_kb(vector<Expr*>& KB)
 
 //----------------------------
 
-SyntaxError::SyntaxError(string s) : runtime_error{"Syntax Error: "+s} {} 
+SyntaxError::SyntaxError(string s) : runtime_error("Syntax Error: "+s) {} 
 
 // for trying to apply an ROI to an expression for which it doesn’t apply (for example,
 // trying to apply double-negation elimination to “(not P)”)

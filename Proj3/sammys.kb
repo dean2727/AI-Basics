@@ -1,29 +1,28 @@
-# one box contains only yellow tennis balls
-# e.g. C1Y ^ ¬C2Y ^ ¬C3Y
-(and C1Y (and (not C2Y) not(C3Y)))
-(and C2Y (and (not C1Y) not(C3Y)))
-(and C3Y (and (not C1Y) not(C2Y)))
+# at most 1 box contains only yellow tennis balls
+# e.g. C1Y -> ¬C2Y ^ ¬C3Y
+(implies C1Y (and (not C2Y) (not C3Y)))
+(implies C2Y (and (not C1Y) (not C3Y)))
+(implies C3Y (and (not C1Y) (not C2Y)))
+# at least 1 box contains only yellow tennis balls
+(or C1Y C2Y C3Y)
 
-# one box contains only white tennis balls
-# e.g. C1W ^ ¬C2W ^ ¬C3W
-(and C1W (and (not C2W) not(C3W)))
-(and C2W (and (not C1W) not(C3W)))
-(and C3W (and (not C1W) not(C2W)))
+# at most 1 box contains only white tennis balls
+# e.g. C1W -> ¬C2W ^ ¬C3W
+(implies C1W (and (not C2W) (not C3W)))
+(implies C2W (and (not C1W) (not C3W)))
+(implies C3W (and (not C1W) (not C2W)))
+# at least 1 box contains only white tennis balls
+(or C1W C2W C3W)
 
-# one box contains both yellow and white tennis balls
-# e.g. C1Y ^ C1W ^ ¬(C2Y ^ C2W) ^ ¬(C3Y ^ C3W)
-(and C1Y (and C1W (and (not (and (C2Y C2W)) not (and (C3Y C3W))))))
-(and C2Y (and C2W (and (not (and (C1Y C1W)) not (and (C3Y C3W))))))
-(and C3Y (and C3W (and (not (and (C1Y C1W)) not (and (C2Y C2W))))))
+# at most 1 box contains both yellow and white tennis balls
+# e.g. C1B -> ¬C2B ^ ¬C3B
+(implies C1B (and (not C2B) (not C3B)))
+(implies C2B (and (not C1B) (not C3B)))
+(implies C3B (and (not C1B) (not C2B)))
+# at least 1 box contains both tennis balls
+(or C1B C2B C3B)
 
 # each box is labeled incorrectly
-# if box is labeled white or yellow, we will observe yellow or white ball, respectively
-(implies L1W O1Y)
-(implies L1Y O1W)
-(implies L2W O2Y)
-(implies L2Y O2W)
-(implies L3W O3Y)
-(implies L3Y O3W)
 
 # if box is labeled both, it actually only contains just 1 color, so we will exlusively observe only yellow or white
 # e.g. L1B -> (O1Y ^ ¬O1W) v (O1W ^ ¬O1Y)  <-- if both were observed, we would have a true implies false = false

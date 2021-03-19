@@ -1,0 +1,66 @@
+# and/or introduction test cases
+#0
+A
+#1
+B
+#2
+(or C D)
+
+# double negation elimination test cases
+#3
+(not (not A))
+#4
+(not (not (or A B)))
+
+# and elimination test cases
+#5
+(and A B)
+#6
+(and (or A B) C)
+#7
+(and A (or B C))
+#8
+(and (or A B) (or C D))
+
+# or elimination test cases
+#9
+(or A B)
+#10
+(or (and A B) C)
+#11
+(or A (and B C))
+#12
+(or (and A B) (and C D))
+
+# modus ponens/implication elimination test cases
+#13
+(implies A B)
+#14
+(and A B C)
+#15
+(or D E F)
+#16
+(implies (and A B C) (or D E F))
+#17
+(implies (not (not A)) B)
+#18
+(not (not A))
+
+# resolution test cases
+#19
+(or (not A) C)
+#20
+(or (not (implies A B)) (and C D E))
+#21
+(or (not (not (implies A B))) (and (or F G) H))
+
+# demorgan v1 test cases
+#22
+(not (or A B))
+#23
+(not (or (implies A (not B)) (and C D E)))
+# demorgan v2 test cases
+#24
+(not (and A B))
+#25
+(not (and (implies A (not B)) (and C D E)))
