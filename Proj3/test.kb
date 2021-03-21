@@ -46,7 +46,7 @@ B
 #18
 (not (not A))
 
-# resolution test cases
+# resolution/implication introduction test cases
 #19
 (or (not A) C)
 #20
@@ -64,3 +64,13 @@ B
 (not (and A B))
 #25
 (not (and (implies A (not B)) (and C D E)))
+
+# modus tolens test cases
+#26
+(implies A B)
+#27
+(not B)
+#28
+(implies (or A B C) (and (not D) E))
+#29
+(not (and (not D) E))

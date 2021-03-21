@@ -1,31 +1,132 @@
 # at most 1 box contains only yellow tennis balls
-# e.g. C1Y -> ¬C2Y ^ ¬C3Y
-(implies C1Y (and (not C2Y) (not C3Y)))
-(implies C2Y (and (not C1Y) (not C3Y)))
-(implies C3Y (and (not C1Y) (not C2Y)))
-# at least 1 box contains only yellow tennis balls
-(or C1Y C2Y C3Y)
+# e.g. C1Y -> ¬C2Y, C1Y -> ¬C3Y
+#0
+(implies C1Y (not C2Y))
+#1
+(implies C1Y (not C3Y))
+#2
+(implies C2Y (not C1Y))
+#3
+(implies C2Y (not C3Y))
+#4
+(implies C3Y (not C1Y))
+#5
+(implies C3Y (not C2Y))
 
 # at most 1 box contains only white tennis balls
-# e.g. C1W -> ¬C2W ^ ¬C3W
-(implies C1W (and (not C2W) (not C3W)))
-(implies C2W (and (not C1W) (not C3W)))
-(implies C3W (and (not C1W) (not C2W)))
-# at least 1 box contains only white tennis balls
-(or C1W C2W C3W)
+#6
+(implies C1W (not C2W))
+#7
+(implies C1W (not C3W))
+#8
+(implies C2W (not C1W))
+#9
+(implies C2W (not C3W))
+#10
+(implies C3W (not C1W))
+#11
+(implies C3W (not C2W))
 
 # at most 1 box contains both yellow and white tennis balls
-# e.g. C1B -> ¬C2B ^ ¬C3B
-(implies C1B (and (not C2B) (not C3B)))
-(implies C2B (and (not C1B) (not C3B)))
-(implies C3B (and (not C1B) (not C2B)))
-# at least 1 box contains both tennis balls
+#12
+(implies C1B (not C2B))
+#13
+(implies C1B (not C3B))
+#14
+(implies C2B (not C1B))
+#15
+(implies C2B (not C3B))
+#16
+(implies C3B (not C1B))
+#17
+(implies C3B (not C2B))
+
+# at least 1 box contains yellow balls, white balls, and both balls
+#18
+(or C1Y C2Y C3Y)
+#19
+(or C1W C2W C3W)
+#20
 (or C1B C2B C3B)
 
-# each box is labeled incorrectly
+# rules derived from observations and the fact that boxes are incorrectly labeled
+# e.g. L1Y ^ O1W -> C1W v C1B
+#21
+(implies (and L1Y O1W) (or C1W C1B))
+#22
+(implies (and L2Y O2W) (or C2W C2B))
+#23
+(implies (and L3Y O3W) (or C3W C3B))
+#24
+(implies (and L1W O1Y) (or C1Y C1B))
+#25
+(implies (and L2W O2Y) (or C2Y C2B))
+#26
+(implies (and L3W O3Y) (or C3Y C3B))
 
-# if box is labeled both, it actually only contains just 1 color, so we will exlusively observe only yellow or white
-# e.g. L1B -> (O1Y ^ ¬O1W) v (O1W ^ ¬O1Y)  <-- if both were observed, we would have a true implies false = false
-(implies L1B (or (and O1Y (not O1W))) (and O1W (not O1Y))))
-(implies L2B (or (and O2Y (not O2W))) (and O2W (not O2Y))))
-(implies L3B (or (and O3Y (not O3W))) (and O3W (not O3Y))))
+# if its labelled both, then it HAS to contain what we observe
+#27
+(implies (and L1B O1Y) C1Y)
+#28
+(implies (and L2B O2Y) C2Y)
+#29
+(implies (and L3B O3Y) C3Y)
+#30
+(implies (and L1B O1W) C1W)
+#31
+(implies (and L2B O2W) C2W)
+#32
+(implies (and L3B O3W) C3W)
+
+# if we know what 2 boxes contain, then we know what the 3rd one contains
+# e.g. C1B ^ C3Y -> C2W
+#33
+(implies (and C1Y C2W) C3B)
+#34
+(implies (and C1W C2Y) C3B)
+#35
+(implies (and C1Y C2B) C3W)
+#36
+(implies (and C1B C2Y) C3W)
+#37
+(implies (and C1W C2B) C3Y)
+#38
+(implies (and C1B C2W) C3Y)
+#39
+(implies (and C1Y C3W) C2B)
+#40
+(implies (and C1W C3Y) C2B)
+#41
+(implies (and C1Y C3B) C2W)
+#42
+(implies (and C1B C3Y) C2W)
+#43
+(implies (and C1W C3B) C2Y)
+#44
+(implies (and C1B C3W) C2Y)
+#45
+(implies (and C2Y C3W) C1B)
+#46
+(implies (and C2W C3Y) C1B)
+#47
+(implies (and C2Y C3B) C1W)
+#48
+(implies (and C2B C3Y) C1W)
+#49
+(implies (and C2W C3B) C1Y)
+#50
+(implies (and C2B C3W) C1Y)
+
+# facts for the specific sammys sport shop problem
+#51
+O1Y
+#52
+L1W
+#53
+O2W
+#54
+L2Y
+#55
+O3Y
+#56
+L3B

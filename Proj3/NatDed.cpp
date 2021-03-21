@@ -81,12 +81,33 @@ Expr* extractExpression(int clause, const vector<string>& partsNeeded) {
 }
 
 /*********************
+ * Double negation elimination
+ * From this: ¬¬A
+ * Derive this: A
+ ********************/
+Expr *DoubleNegationElimination(Expr *s1) {
+    vector<string> parts = tokenize(s1->toString());
+
+    // dont consider the parts "(", "not", "(", "not", and the last 2 ")"
+    vector<string> partsNeeded(parts.begin() + 4, parts.end() - 2);
+
+    string sentence = "";
+    for (int i = 0; i < partsNeeded.size(); i++) {
+        sentence += partsNeeded[i] + " ";
+    }
+
+    return parse(sentence);
+}
+
+/*********************
+ * Modus ponens
  * From this: A->B, A
  * Derive this: B
  ********************/
 Expr* ModusPonens(Expr* s1, Expr* s2) {
     Expr* ret = nullptr;
     vector<string> parts = tokenize(s1 -> toString());
+
     // dont consider the parts "(", "implies", and the last ")"
     vector<string> partsNeeded(parts.begin() + 2, parts.end() - 1);
 
@@ -104,6 +125,7 @@ Expr* ModusPonens(Expr* s1, Expr* s2) {
 }
 
 /*********************
+ * Implication elimination
  * From this: A->B
  * Derive this: ¬AvB
  ********************/
@@ -117,6 +139,11 @@ Expr* ImplicationElimination(Expr* s1) {
     string A = extractExpression(0, partsNeeded) -> toString();
     string negA = "(not " + A + ")";
 
+    // may need to do double negation elimination
+    if (tokenize(A)[1] == "not") {
+        negA = DoubleNegationElimination(parse(negA))->toString();
+    }
+
     // extract B
     string B = extractExpression(1, partsNeeded) -> toString();
 
@@ -125,26 +152,21 @@ Expr* ImplicationElimination(Expr* s1) {
 }
 
 /*********************
+ * And elimination
  * From this: A^B
  * Derive this: A
  ********************/
 Expr* AndElimination(Expr* s1, int clause) {
     vector<string> parts = tokenize(s1 -> toString());
-    // cout << "tokenized!\n";
-    // for (int i=0;i<parts.size();i++){
-    //     cout << parts[i] << endl;
-    // }
 
     // dont consider the parts "(", "and", and the last ")"
     vector<string> partsNeeded(parts.begin() + 2, parts.end() - 1);
-    // for (int i=0;i<partsNeeded.size();i++){
-    //     cout << partsNeeded[i] << endl;
-    // }
 
     return extractExpression(clause, partsNeeded);
 }
 
 /*********************
+ * And introduction
  * From this: A, B
  * Derive this: A^B
  ********************/
@@ -153,6 +175,7 @@ Expr* AndIntroduction(Expr* s1, Expr* s2) {
 }
 
 /*********************
+ * Or introduction
  * From this: A, B
  * Derive this: AvB
  ********************/
@@ -161,24 +184,7 @@ Expr* OrIntroduction(Expr* s1, Expr* s2) {
 }
 
 /*********************
- * From this: ¬¬A
- * Derive this: A
- ********************/
-Expr* DoubleNegationElimination(Expr* s1) {
-    vector<string> parts = tokenize(s1 -> toString());
-
-    // dont consider the parts "(", "not", "(", "not", and the last 2 ")"
-    vector<string> partsNeeded(parts.begin() + 4, parts.end() - 2);
-
-    string sentence = "";
-    for (int i = 0; i < partsNeeded.size(); i++) {
-        sentence += partsNeeded[i] + " ";
-    }
-    
-    return parse(sentence);
-}
-
-/*********************
+ * Resolution
  * From this: AvB, ¬AvC
  * Derive this: BvC
  ********************/
@@ -209,6 +215,7 @@ Expr* Resolution(Expr* s1, Expr* s2) {
 }
 
 /*********************
+ * DeMorgan's law
  * 2 versions:
  * 1. 'not' over 'or':
  * From this: ¬(AvB)
@@ -235,6 +242,14 @@ Expr* DeMorgan(Expr* s1) {
     B = extractExpression(1, partsNeeded) -> toString();
     negB = "(not " + B + ")";
 
+    // may need to do double elimination negation on A and/or B now
+    if (tokenize(A)[1] == "not") {
+        negA = DoubleNegationElimination(parse(negA))->toString();
+    }
+    if (tokenize(B)[1] == "not") {
+        negB = DoubleNegationElimination(parse(negB))->toString();
+    }
+
     // not over or
     if (version == 1) {
         return parse("(and " + negA + " " + negB + ")");
@@ -246,6 +261,72 @@ Expr* DeMorgan(Expr* s1) {
     }
 }
 
+/*********************
+ * Implication introduction
+ * From this: ¬AvB
+ * Derive this: A->B
+ ********************/
+Expr* ImplicationIntroduction(Expr* s1) {
+    vector<string> parts = tokenize(s1->toString());
+
+    // only need the relevant parts for A and B (remove the "(", "or", and last ")")
+    vector<string> partsNeeded(parts.begin() + 2, parts.end() - 1);
+
+    // extract A and negate it
+    string negA = extractExpression(0, partsNeeded)->toString();
+    string negnegA = "(not " + negA + ")";
+
+    // need to perform a double negation elimination on A (if there's a double not)
+    string A;
+    if (partsNeeded[0] == "not") {
+        A = DoubleNegationElimination(parse(negnegA))->toString();
+    }
+    else {
+        A = negnegA;
+    }
+
+    // extract B
+    string B = extractExpression(1, partsNeeded)->toString();
+
+    // return a parsed version of negated A and B or'ed together
+    return parse("(implies " + A + " " + B + ")");
+}
+
+/*********************
+ * Modus tolens
+ * From this: A->B, ¬B
+ * Derive this: ¬A
+ ********************/
+Expr* ModusTolens(Expr *s1, Expr *s2) {
+    Expr *ret = nullptr;
+    vector<string> parts = tokenize(s1->toString());
+
+    // dont consider the parts "(", "implies", and the last ")"
+    vector<string> partsNeeded(parts.begin() + 2, parts.end() - 1);
+
+    // extract the consequents from s1, and negate it
+    string consequents = extractExpression(1, partsNeeded) -> toString();
+    Expr* negConsequents = parse("(not " + consequents + ")");
+
+    // may need to perform double negation elimination
+    if (tokenize(consequents)[1] == "not") {
+        negConsequents = DoubleNegationElimination(negConsequents);
+    }
+
+    // make sure the negated consequents and s2 equal each other
+    if (Eq(negConsequents, s2)) {
+        // extract the antecedents of s1, and negate it
+        string antecedents = extractExpression(0, partsNeeded) -> toString();
+        ret = parse("(not " + antecedents + ")");
+
+        // double negation elimination?
+        if (tokenize(antecedents)[1] == "not") {
+            ret = DoubleNegationElimination(ret);
+        }
+    }
+
+    return ret;
+}
 
 // Test functions
 void testModusPonens(Expr* s1, Expr* s2) {
@@ -286,4 +367,14 @@ void testResolution(Expr* s1, Expr* s2) {
 void testDeMorgan(Expr* s1) {
     Expr* s2 = DeMorgan(s1);
     cout << s2 -> toString() << endl;
+}
+
+void testImplicationIntroduction(Expr* s1) {
+    Expr *s2 = ImplicationIntroduction(s1);
+    cout << s2->toString() << endl;
+}
+
+void testModusTolens(Expr *s1, Expr *s2) {
+    Expr *s3 = ModusTolens(s1, s2);
+    cout << s3->toString() << endl;
 }

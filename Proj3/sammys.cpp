@@ -19,10 +19,53 @@
 
 #include "parser.hpp"
 #include "NatDed.cpp"
+#include <fstream>
 using namespace std;
 
 void do_inference(vector<Expr*>& KB) {
-    
+    ofstream os("sammys.txt");
+
+    // 1. and intro (args: L3B, O3Y)
+    KB.push_back(AndIntroduction(KB[56], KB[55]));
+    os << KB[57]->toString() << endl;
+
+    // 2. modus ponens (args: L3B ^ O3Y -> C3Y, L3B ^ O3Y)
+    KB.push_back(ModusPonens(KB[29], KB[57]));
+    os << KB[58]->toString() << endl;
+
+    // 3. and intro (args: L1W, O1Y)
+    KB.push_back(AndIntroduction(KB[52], KB[51]));
+    os << KB[59]->toString() << endl;
+
+    // 4. modus ponens (args: L1W ^ O1Y -> C1Y v C1B, L1W ^ O1Y)
+    KB.push_back(ModusPonens(KB[24], KB[59]));
+    os << KB[60]->toString() << endl;
+
+    // 5. implication elimination (args: C1Y -> ¬C3Y)
+    KB.push_back(ImplicationElimination(KB[1]));
+    os << KB[61]->toString() << endl;
+
+    // 6. resolution (args: C1Y v C1B, ¬C1Y v ¬C3Y)
+    KB.push_back(Resolution(KB[60], KB[61]));
+    os << KB[62]->toString() << endl;
+
+    // 7. implication introduction (args: C1B v ¬C3Y)
+    KB.push_back(ImplicationIntroduction(KB[62]));
+    os << KB[63]->toString() << endl;
+
+    // 8. modus tolens (args: ¬C1B -> ¬C3Y, C3Y)
+    KB.push_back(ModusTolens(KB[63], KB[58]));
+    os << KB[64]->toString() << endl;
+
+    // 9. and intro (args: C1B, C3Y)
+    KB.push_back(AndIntroduction(KB[64], KB[58]));
+    os << KB[65]->toString() << endl;
+
+    // 10. modus ponens (args: C1B ^ C3Y -> C2W, C1B ^ C3Y)
+    KB.push_back(ModusPonens(KB[42], KB[65]));
+    os << KB[66]->toString() << endl;
+
+    os.close();
 }
 
 

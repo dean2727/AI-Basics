@@ -1,0 +1,10 @@
+(and L3B O3Y)
+C3Y
+(and L1W O1Y)
+(or C1Y C1B)
+(or (not C1Y) (not C3Y))
+(or C1B (not C3Y))
+(implies (not C1B) (not C3Y))
+C1B
+(and C1B C3Y)
+C2W
