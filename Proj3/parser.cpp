@@ -15,7 +15,7 @@ Expr::Expr(string s) { sym = s; kind = ATOM; }
 
 Expr::Expr(vector<string> tokens, int start)
 {
-  int i=start,n=tokens.size();
+  unsigned int i=start,n=tokens.size();
   kind = LIST; // assume there are multiple tokens, change to ATOM later
   while (i<n)
   {
@@ -40,7 +40,7 @@ Expr::Expr(Expr* e)
   if (e->kind==ATOM) sym = e->sym;
   else
   {
-    for (int i=0 ; i<e->sub.size() ; i++)
+    for (unsigned int i=0 ; i<e->sub.size() ; i++)
       sub.push_back(new Expr(e->sub[i])); // deep copy
   }
 }
@@ -50,7 +50,7 @@ Expr::Expr(Expr* e)
 Expr::Expr(vector<Expr*> L)
 {
   kind = LIST;
-  for (int i=0 ; i<L.size() ; i++)
+  for (unsigned int i=0 ; i<L.size() ; i++)
     sub.push_back(new Expr(L[i])); // deep copy
 }
 
@@ -60,8 +60,8 @@ string Expr::toString()
   else 
   {
     string s("(");
-    int n=sub.size();
-    for (int i=0 ; i<n; i++) {
+    unsigned int n=sub.size();
+    for (unsigned int i=0 ; i<n; i++) {
       s += sub[i]->toString()+(i<n-1 ? " ": "");
     }
     s += ")";
@@ -72,7 +72,7 @@ string Expr::toString()
 vector<string> tokenize(string s)
 {
   vector<string> tokens;
-  int i=0,n=s.size();
+  unsigned int i=0,n=s.size();
   while (i<n)
   {
     if (s[i]=='(') { tokens.push_back("("); i++; }
@@ -106,7 +106,7 @@ bool Eq(Expr* a, Expr* b)
   else // a->kind==LIST
   {
     if (b->kind!=LIST || a->sub.size()!=b->sub.size()) return false;
-    for (int i=0 ; i<a->sub.size() ; i++)
+    for (unsigned int i=0 ; i<a->sub.size() ; i++)
       if (!Eq(a->sub[i],b->sub[i])) return false;
   }
   return true;
@@ -131,7 +131,7 @@ vector<Expr*>load_kb(string fname)
 
 void show_kb(vector<Expr*>& KB)
 {
-  for (int i=0 ; i<KB.size() ; i++)
+  for (unsigned int i=0 ; i<KB.size() ; i++)
   {
     cout << i << ". ";
     cout << KB[i]->toString() << endl;

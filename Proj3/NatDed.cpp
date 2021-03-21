@@ -85,14 +85,14 @@ Expr* extractExpression(int clause, const vector<string>& partsNeeded) {
  * From this: ¬¬A
  * Derive this: A
  ********************/
-Expr *DoubleNegationElimination(Expr *s1) {
+Expr* DoubleNegationElimination(Expr *s1) {
     vector<string> parts = tokenize(s1->toString());
 
     // dont consider the parts "(", "not", "(", "not", and the last 2 ")"
     vector<string> partsNeeded(parts.begin() + 4, parts.end() - 2);
 
     string sentence = "";
-    for (int i = 0; i < partsNeeded.size(); i++) {
+    for (unsigned int i = 0; i < partsNeeded.size(); i++) {
         sentence += partsNeeded[i] + " ";
     }
 
@@ -148,13 +148,15 @@ Expr* ImplicationElimination(Expr* s1) {
     string B = extractExpression(1, partsNeeded) -> toString();
 
     // return a parsed version of negated A and B or'ed together
-    return parse("(or " + negA + B + ")");
+    return parse("(or " + negA + " " + B + ")");
 }
 
 /*********************
  * And elimination
  * From this: A^B
  * Derive this: A
+ * (if clause = 0, take A,
+ * if clause = 1, take B)
  ********************/
 Expr* AndElimination(Expr* s1, int clause) {
     vector<string> parts = tokenize(s1 -> toString());

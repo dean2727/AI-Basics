@@ -45,32 +45,38 @@ B
 (implies (not (not A)) B)
 #18
 (not (not A))
+#19
+(implies (not A) B)
 
 # resolution/implication introduction test cases
-#19
-(or (not A) C)
 #20
-(or (not (implies A B)) (and C D E))
+(or (not A) C)
 #21
+(or (not (implies A B)) (and C D E))
+#22
 (or (not (not (implies A B))) (and (or F G) H))
 
 # demorgan v1 test cases
-#22
-(not (or A B))
 #23
-(not (or (implies A (not B)) (and C D E)))
-# demorgan v2 test cases
+(not (or A B))
 #24
-(not (and A B))
+(not (or (implies A (not B)) (and C D E)))
 #25
+(not (or (not A) B))
+# demorgan v2 test cases
+#26
+(not (and A B))
+#27
 (not (and (implies A (not B)) (and C D E)))
+#28
+(not (and A (not B)))
 
 # modus tolens test cases
-#26
-(implies A B)
-#27
-(not B)
-#28
-(implies (or A B C) (and (not D) E))
 #29
+(implies A B)
+#30
+(not B)
+#31
+(implies (or A B C) (and (not D) E))
+#32
 (not (and (not D) E))
