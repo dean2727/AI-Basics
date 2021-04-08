@@ -1,0 +1,34 @@
+Results summary for running DPLL algorithm with and without the unit-clause heuristic on the Australia Map Coloring problem and 6 Queens problem (view in full screen for optimal viewing experience):
+
+Input KB	| Output transcript filename		| Results
+----------------------------------------------------------------------------------------------------------------------------------------------
+mapcolor.cnf	| DPLL_mapcolor.txt (w/	UC heuristic)	| A satisfiable model was obtained after 33 calls to DPLL. The model was: set NSW to red,
+		| 					| NT to red, Q to green, SA to blue, T to red, V to green, and WA to green. Backtracking
+		| 				 	| occurred 4 times.
+		|  					|
+mapcolor.cnf	| DPLL_map_color_without_UCH.txt (w/ out| A satisfiable model was obtained after 39 calls to DPLL. The modal was: set NSW to red,
+		| UC heuristic)				| NT to red, Q to green, SA to blue, T to red, V to green, and WA to green. Backtracking
+		|					| occurred 12 times. Hence, it took slightly longer to find the model without the unit 
+		|					| heuristic.
+		|					|
+mapcolor2.cnf	| DPLL_mapcolor2.txt (w/ UC heuristic)	| No model could be found due to the 2 conflicting colored state facts (QG and VB). 
+		|					| Unsatisfiable was determined after 19 DPLL calls, though 52 out of the 57 clauses were
+		|					| able to be satisfied. After the one instance of backtracking, the algorithm decided
+		|					| unsatisfiability.
+		|					|
+mapcolor2.cnf	| DPLL_mapcolor2_without_UCH.txt (w/	| No model could be found due to the 2 conflicting colored state facts (QG and VB).
+		| out UC heuristic)			| A considerably larger amount of DPLL calls was needed to determine this compared to 
+		|					| the instance with the UC heuristic, 165 calls. The maximum number of clauses that
+		|					| were able to be satisfied were 38 out of 57, and 0 were satisfied after all DPLL 
+		|					| calls. Backtracking occurred 83 times.
+		|					|
+6queens.cnf	| DPLL_6queens.txt (w/ UC heuristic)	| The 6 queens problem took a bit longer than map coloring, due to there being considerably
+		|					| more clauses to check (296 compared to 55). A satisfiable model was obtained after 189
+		|					| calls to DPLL. The model was (Using the same denotation of square numbering as in the 
+		|					| handout): Place a queen on squares 15, 23, 31, 46, 54, 62. Backtracking occurred 23 times.
+		|					|
+6queens.cnf	| DPLL_6queens_without_UCH.txt (w/ out	| A satisfiable model was obtained after 503 calls to DPLL. The modal was: place queens
+		| UC heuristic)				| on squares 15, 23, 31, 46, 54, 62. Backtracking occurred 236 times, which is significantly
+		|					| more than when the UC heuristic was used, so again, it took longer without the heuristic.
+
+

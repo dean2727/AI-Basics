@@ -1,0 +1,158 @@
+model: NSWB=? NSWG=? NSWR=? NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 0 out of 55
+trying NSWB=0
+
+model: NSWB=F NSWG=? NSWR=? NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 0 out of 55
+trying NSWG=0
+
+model: NSWB=F NSWG=F NSWR=? NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 1 out of 55
+forcing NSWR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 4 out of 55
+forcing SAR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 5 out of 55
+forcing QR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=? NTG=? NTR=? QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 7 out of 55
+forcing VR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=? NTG=? NTR=? QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 9 out of 55
+trying NSWR=0
+
+model: NSWB=F NSWG=F NSWR=F NTB=? NTG=? NTR=? QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 8 out of 55
+backtracking...
+trying NSWR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=? NTG=? NTR=? QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 9 out of 55
+trying NTB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=? NTR=? QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 9 out of 55
+trying NTG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=? QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 10 out of 55
+forcing NTR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 15 out of 55
+forcing WAR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=F 
+num clauses satisfied: 17 out of 55
+trying NTR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=F QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=F 
+num clauses satisfied: 16 out of 55
+backtracking...
+trying NTR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=? QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=F 
+num clauses satisfied: 17 out of 55
+trying QB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=? QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=F 
+num clauses satisfied: 20 out of 55
+forcing QG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=? SAG=? SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=F 
+num clauses satisfied: 25 out of 55
+forcing SAG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=? SAG=F SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=F 
+num clauses satisfied: 29 out of 55
+forcing SAB=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=? WAG=? WAR=F 
+num clauses satisfied: 35 out of 55
+forcing WAB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=F WAG=? WAR=F 
+num clauses satisfied: 38 out of 55
+forcing WAG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=? VG=? VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 43 out of 55
+forcing VB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=? VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 46 out of 55
+forcing VG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 51 out of 55
+trying QG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=F QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 50 out of 55
+backtracking...
+trying QG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 51 out of 55
+trying QR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 51 out of 55
+trying SAB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=F SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 50 out of 55
+backtracking...
+trying SAB=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 51 out of 55
+trying SAG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 51 out of 55
+trying SAR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 51 out of 55
+trying TB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=? TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 51 out of 55
+trying TG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=? VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 52 out of 55
+forcing TR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 55 out of 55
+success!
+number of DPLL calls=33
+here is a model:
+NSWB = F
+NSWG = F
+NSWR = T
+NTB = F
+NTG = F
+NTR = T
+QB = F
+QG = T
+QR = F
+SAB = T
+SAG = F
+SAR = F
+TB = F
+TG = F
+TR = T
+VB = F
+VG = T
+VR = F
+WAB = F
+WAG = T
+WAR = F

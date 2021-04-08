@@ -1,0 +1,190 @@
+model: NSWB=? NSWG=? NSWR=? NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 0 out of 55
+trying NSWB=0
+
+model: NSWB=F NSWG=? NSWR=? NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 0 out of 55
+trying NSWG=0
+
+model: NSWB=F NSWG=F NSWR=? NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 1 out of 55
+trying NSWR=0
+
+model: NSWB=F NSWG=F NSWR=F NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 3 out of 55
+backtracking...
+trying NSWR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=? NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 4 out of 55
+trying NTB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=? NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 4 out of 55
+trying NTG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=? QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 5 out of 55
+trying NTR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=F QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 7 out of 55
+backtracking...
+trying NTR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=? QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 8 out of 55
+trying QB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=? QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 10 out of 55
+trying QG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=F QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 13 out of 55
+trying QR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=F QR=F SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 17 out of 55
+backtracking...
+trying QR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=F QR=T SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 16 out of 55
+backtracking...
+trying QG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=? SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 13 out of 55
+trying QR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=? SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 18 out of 55
+trying SAB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=F SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 21 out of 55
+trying SAG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=F SAG=F SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 25 out of 55
+trying SAR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=F SAG=F SAR=F TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 30 out of 55
+backtracking...
+trying SAR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=F SAG=F SAR=T TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 29 out of 55
+backtracking...
+trying SAG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=F SAG=T SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 24 out of 55
+backtracking...
+trying SAB=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=? SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 21 out of 55
+trying SAG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=? TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 25 out of 55
+trying SAR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=? TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 31 out of 55
+trying TB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=? TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 31 out of 55
+trying TG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=? VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 32 out of 55
+trying TR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=F VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 34 out of 55
+backtracking...
+trying TR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=? VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 35 out of 55
+trying VB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=? VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 37 out of 55
+trying VG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=F VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 40 out of 55
+trying VR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=F VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 44 out of 55
+backtracking...
+trying VR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=F VR=T WAB=? WAG=? WAR=? 
+num clauses satisfied: 44 out of 55
+backtracking...
+trying VG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=? WAB=? WAG=? WAR=? 
+num clauses satisfied: 40 out of 55
+trying VR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=? WAG=? WAR=? 
+num clauses satisfied: 45 out of 55
+trying WAB=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=F WAG=? WAR=? 
+num clauses satisfied: 47 out of 55
+trying WAG=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=F WAG=F WAR=? 
+num clauses satisfied: 50 out of 55
+trying WAR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=F WAG=F WAR=F 
+num clauses satisfied: 54 out of 55
+backtracking...
+trying WAR=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=F WAG=F WAR=T 
+num clauses satisfied: 54 out of 55
+backtracking...
+trying WAG=1
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=F WAG=T WAR=? 
+num clauses satisfied: 50 out of 55
+trying WAR=0
+
+model: NSWB=F NSWG=F NSWR=T NTB=F NTG=F NTR=T QB=F QG=T QR=F SAB=T SAG=F SAR=F TB=F TG=F TR=T VB=F VG=T VR=F WAB=F WAG=T WAR=F 
+num clauses satisfied: 55 out of 55
+success!
+number of DPLL calls=39
+here is a model:
+NSWB = F
+NSWG = F
+NSWR = T
+NTB = F
+NTG = F
+NTR = T
+QB = F
+QG = T
+QR = F
+SAB = T
+SAG = F
+SAR = F
+TB = F
+TG = F
+TR = T
+VB = F
+VG = T
+VR = F
+WAB = F
+WAG = T
+WAR = F
