@@ -1,4 +1,4 @@
-# CSCE 420 Programming Assignment #3: Natural Deduction
+# Project 3: Natural Deduction
 There is a shipment of 3 boxes filled with tennis balls. 1 box contains only
 yellow tennis balls, 1 box contains only white tennis balls, and 1 box 
 contains both yellow and white tennis balls. Each box is definitely 
