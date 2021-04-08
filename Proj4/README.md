@@ -13,13 +13,13 @@ a coloring constraint) and the 6 queens problem.
 
 ## Compiling and Running
 In order to compile and link the program, simply call "make". Then, to run, call
-"./DPLL <cnf file> <optional UC flag>". The cnf file is the knowledge base representing
+"./DPLL <cnf file> optional UC flag". The cnf file is the knowledge base representing
 the constraints for the problem. The optional UC flag determines if the unit-clause
 heuristic is to be used. Type "-unit" to turn off the heuristic, and dont type
 anoything otherwise. New knowledge bases for the (Australia) map coloring problem
-and N queens problems can be generated. For map coloring, run "python mapcolor.py > <cnf file>",
+and N queens problems can be generated. For map coloring, run "python mapcolor.py > filename",
 which will redirect the output of the script (rules) into the .cnf file. For N queens,
-run "python queens.py <N> > <cnf file>", where N is the width & height of the NxN board
+run "python queens.py N > filename", where N is the width & height of the NxN board
 used for the N queens problem, and the output is similarly redirected into the .cnf file.
 
 ## Results
