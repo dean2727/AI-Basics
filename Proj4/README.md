@@ -1,6 +1,6 @@
 # Project 4: DPLL
 Satisfiability problems, such as the map coloring problem and N queens problem, 
-can be solved by using the DPLL (Davis, Putnam, Logemann, Loveland) algorithm. This
+can be solved by using the DPLL (Davis-Putnam-Logemann-Loveland) algorithm. This
 project aims to do just that. It will read in the knowledge base, which is in a .cnf
 file and is assumed to have the CNF form of the rules that govern the problem in question.
 It then finds the unique symbols to assign in the model and executes DPLL. The unit
@@ -13,8 +13,8 @@ a coloring constraint) and the 6 queens problem.
 
 ## Compiling and Running
 In order to compile and link the program, simply call "make". Then, to run, call
-"./DPLL <cnf file> optional UC flag". The cnf file is the knowledge base representing
-the constraints for the problem. The optional UC flag determines if the unit-clause
+"./DPLL filename -unit". The cnf file (filename) is the knowledge base representing
+the constraints for the problem. The optional UC flag (-unit) determines if the unit-clause
 heuristic is to be used. Type "-unit" to turn off the heuristic, and dont type
 anoything otherwise. New knowledge bases for the (Australia) map coloring problem
 and N queens problems can be generated. For map coloring, run "python mapcolor.py > filename",
