@@ -16,7 +16,7 @@ In order to compile and link the program, simply call "make". Then, to run, call
 "./DPLL filename -unit". The cnf file (filename) is the knowledge base representing
 the constraints for the problem. The optional UC flag (-unit) determines if the unit-clause
 heuristic is to be used. Type "-unit" to turn off the heuristic, and dont type
-anoything otherwise. New knowledge bases for the (Australia) map coloring problem
+anything otherwise. New knowledge bases for the (Australia) map coloring problem
 and N queens problems can be generated. For map coloring, run "python mapcolor.py > filename",
 which will redirect the output of the script (rules) into the .cnf file. For N queens,
 run "python queens.py N > filename", where N is the width & height of the NxN board
