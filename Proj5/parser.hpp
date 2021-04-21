@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
+#include <set>
 
 #ifndef PARSER_HPP
 #define PARSER_HPP

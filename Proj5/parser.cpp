@@ -139,8 +139,27 @@ void show_kb(vector<Expr*>& KB, set<Expr*>& KBclauses)
   }
 }
 
+int get_MCL(Expr* clause1, Expr* clause2) {
+  int ret = 0;
+  vector<string> parts1 = tokenize(clause1->toString());
+  vector<string> parts2 = tokenize(clause2->toString());
+
+  for (unsigned int i = 0; i < parts1.size(); i++) {
+    if (parts1[i] != "or" && parts1[i] != "(" && parts1[i] != ")" && parts1[i] != "not") {
+      ret++;
+    }
+  }
+  for (unsigned int i = 0; i < parts2.size(); i++) {
+    if (parts2[i] != "or" && parts2[i] != "(" && parts2[i] != ")" && parts2[i] != "not") {
+      ret++;
+    }
+  }
+
+  return ret;
+}
+
 Expr* negate_query(Expr* query) {
-  vector<string> parts = tokenize(query);
+  vector<string> parts = tokenize(query->toString());
   string negQuery = "(or ";
 
   // if query starts with a "not", can just replace this with an "or" (double negation)
