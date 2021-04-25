@@ -78,9 +78,37 @@ vector<string> matchingPropositions(Expr* clause1, Expr* clause2) {
  * 2: clause 2
  * *****************************/
 bool resolvable(Expr* clause1, Expr* clause2) {
-    vector<string> common = matchingPropositions(clause1, clause2);
-    if (common.empty()) return false;
-    else return true;
+    vector<string> ret;
+    set<string> posLits;
+    set<string> negLits;
+    vector<string> parts1 = tokenize(clause1->toString());
+    vector<string> parts2 = tokenize(clause2->toString());
+
+    bool common = false;
+    for (unsigned int i = 2; i < parts1.size()-1; i++) {
+        if (parts1[i] == "not")
+            negLits.insert(parts1[i+1]);
+        else if (parts1[i] != "(" && parts1[i] != ")" && parts1[i-1] != "not")
+            posLits.insert(parts1[i]);
+    }
+    for (unsigned int i = 2; i < parts2.size()-1; i++) {
+        if (parts2[i] == "not" && posLits.count(parts2[i+1])) {
+            // if already a common one encountered, return false, can only be 1 common literal
+            if (common)
+                return false;
+            common = true;
+        }
+        else if (parts2[i] != "(" && parts2[i] != ")" && parts2[i-1] != "not" && negLits.count(parts2[i])) {
+            if (common)
+                return false;
+            common = true;
+        }
+    }
+
+    if (common)
+        return true;
+    else
+        return false;
 }
 
 /********************************
@@ -95,7 +123,51 @@ bool resolvable(Expr* clause1, Expr* clause2) {
  * 3: "Prop"
  * *****************************/
 Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
+    vector<string> parts1 = tokenize(clause1->toString());
+    vector<string> parts2 = tokenize(clause2->toString());
+    set<string> seenProps;
+    string newClause = "(or ";
 
+    unsigned int i;
+    for (i = 2; i < parts1.size()-1; i++) {
+        // if this is a "(" and the literal in this "(not <lit>)" is Prop, dont append these parts to newClause
+        if (parts1[i] == "(") {
+            if (parts1[i+1] == "not" && parts1[i+2] == Prop) {
+                seenProps.insert(parts1[i+2]);
+                i += 2;
+            }
+            else
+                newClause += "(";
+        }
+        else if (parts1[i] == ")" || parts1[i] == "not")
+            newClause += parts1[i] + " ";
+        // otherwise, just see if this part (that is a potential positive literal) isnt Prop
+        else {
+            if (parts1[i] != Prop && !seenProps.count(parts1[i]))
+                newClause += parts1[i] + " ";
+            seenProps.insert(parts1[i]);
+        }
+    }
+    for (i = 2; i < parts2.size()-1; i++) {
+        if (parts2[i] == "(") {
+            if (parts2[i+1] == "not" && parts2[i+2] == Prop) {
+                seenProps.insert(parts2[i+2]);
+                i += 2;
+            }
+            else
+                newClause += "(";
+        }
+        else if (parts2[i] == ")" || parts2[i] == "not")
+            newClause += parts2[i] + " ";
+        else {
+            if (parts2[i] != Prop && !seenProps.count(parts2[i]))
+                newClause += parts2[i] + " ";
+            seenProps.insert(parts2[i]);
+        }
+    }
+
+    newClause += ")";
+    return parse(newClause);
 }
 
 /********************************
@@ -108,25 +180,30 @@ Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
  * *****************************/
 bool validateClause(Expr* clause) {
     vector<string> parts = tokenize(clause->toString());
-    if (parts[0] != "(" || parts[1] != "or" || parts[-1] != ")")
+    if (parts[0] != "(" || parts[1] != "or" || parts[parts.size()-1] != ")")
         return false;
 
     // check the literals, if there are any
     set<string> seenLits;
     int numOpenParen = 0, numCloseParen = 0;
     for (unsigned int i = 2; i < parts.size()-1; i++) {
-        if (parts[i] == "(") numOpenParen++;
-        else if (parts[i] == ")") numCloseParen++;
+        if (parts[i] == "(")
+            numOpenParen++;
+        else if (parts[i] == ")")
+            numCloseParen++;
         else if (parts[i] == "not") {
             // positive and negative literal both in same clause
-            if (seenLits.count(parts[i+1])) return false;
+            if (seenLits.count(parts[i+1]))
+                return false;
         }
         else {
-            if (parts[i-1] != "not") seenLits.insert(parts[i]);
+            if (parts[i-1] != "not")
+                seenLits.insert(parts[i]);
         }
     }
 
-    if (numOpenParen != numCloseParen) return false;
+    if (numOpenParen != numCloseParen)
+        return false;
     return true;
 }
 
@@ -182,16 +259,15 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
         Expr* Cj = KB[rp.j];
 
         // let Props be a list of props that appear in both clauses as opposite literals
-        vector<string> props = get_common_literals();
+        vector<string> props = matchingPropositions(Ci, Cj);
         unsigned int P;
         for (P = 0; P < props.size(); P++) {
             Expr* resolvent = resolve(Ci, Cj, props[P]);
-            if (resolvent -> toString() == "(or )") {
+            if (resolvent -> toString() == "(or )")
                 return true;
-            }
-            if (validateClause(resolvent) == false || KBclauses.count(resolvent)) {
+            if (validateClause(resolvent) == false || KBclauses.count(resolvent))
                 continue;
-            }
+
             // see if the resolvant is resolvable with any other clause in the KB            
             for (i = 0; i < KB.size(); i++) {
                 if (resolvable(KB[i], resolvent)) {
@@ -214,16 +290,43 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
 int main(int argc, char* argv[]) {
     try {
         // load the KB and get negated query
-        vector<Expr*> KB = load_kb(argv[1]);
-        string negQuery = argv[2];
+        // vector<Expr*> KB = load_kb(argv[1]);
+        // string negQuery = argv[2];
 
-        // run resolution refutation
-        if (resolution(KB, parse(negQuery))) {
-            cout << "success! derived empty clause, so Q is entailed" << endl;
-        }
-        else {
-            cout << "failure! empty clause could not be derived, so Q is not entailed" << endl;
-        }
+        // // run resolution refutation
+        // if (resolution(KB, parse(negQuery))) {
+        //     cout << "success! derived empty clause, so Q is entailed" << endl;
+        // }
+        // else {
+        //     cout << "failure! empty clause could not be derived, so Q is not entailed" << endl;
+        // }
+
+
+        // Testing suite
+        // vector<Expr*> KB = load_kb("test.kb");
+        // cout << "Testing resolvable():" << endl;
+        // cout << "args: " << KB[0]->toString() << ", " << KB[1]->toString() << endl;
+        // assert(resolvable(KB[0], KB[1]) == true);
+        // cout << endl;
+
+        // cout << "Testing matchingPropositions():" << endl;
+        // cout << "args: " << KB[0]->toString() << ", " << KB[1]->toString() << endl;
+        // vector<string> mp = matchingPropositions(KB[0], KB[1]);
+        // cout << mp[0] << endl << endl;
+
+        // cout << "Testing resolve():" << endl;
+        // cout << "args: " << KB[0]->toString() << ", " << KB[1]->toString() << ", " << mp[0] << endl;
+        // cout << resolve(KB[0], KB[1], mp[0])->toString() << endl << endl;
+
+        // cout << "Testing validateClause():" << endl;
+        // cout << "arg: " << KB[0]->toString() << endl;
+        // assert(validateClause(KB[0]) == true);
+        // cout << "arg: " << KB[1]->toString() << endl;
+        // assert(validateClause(KB[1]) == true);
+        // // repeating literals
+        // cout << "arg: " << KB[2]->toString() << endl;
+        // assert(validateClause(KB[2]) == false);
+        // cout << endl;
     }
     catch (runtime_error& e) {
         cout << e.what() << endl;
