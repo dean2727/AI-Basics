@@ -1,0 +1,8 @@
+# sample from the instructions
+(or (not P) Q)
+(or (not L) (not M) P)
+(or (not B) (not L) M)
+(or (not A) (not P) L)
+(or (not A) (not B) L)
+(or A)
+(or B)

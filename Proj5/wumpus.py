@@ -15,6 +15,7 @@ Name: Dean Orenstein
 Class: CSCE 420
 Date: 04/28/2021
 '''
+
 import sys
 
 N = 0
@@ -25,6 +26,7 @@ if __name__ == "__main__":
     # rule for there being a wumpus in at least 1 spot
     wumpusOneSpot = "(or "
 
+    wumpAdj = set()
     for X in range(1, N+1):
         for Y in range(1, N+1):
             wumpusOneSpot += "wumpus"+str(X)+str(Y)+" "
@@ -35,7 +37,11 @@ if __name__ == "__main__":
             for otherX in range(1, N+1):
                 for otherY in range(1, N+1):
                     if otherX != X or otherY != Y:
-                        print("(or (not wumpus"+str(X)+str(Y)+") (not wumpus"+str(otherX)+str(otherY)+"))")
+                        rule = "(or (not wumpus"+str(X)+str(Y)+") (not wumpus"+str(otherX)+str(otherY)+"))"
+                        converse = "(or (not wumpus"+str(otherX)+str(otherY)+") (not wumpus"+str(X)+str(Y)+"))"
+                        if converse not in wumpAdj:
+                            print(rule)
+                            wumpAdj.add(rule)
 
             ''' room is safe if and only if theres no wumpus or pit.
             e.g. safe11 -> (¬wumpus11 ^ ¬pit11), (¬wumpus11 ^ ¬pit11) -> safe11
@@ -106,3 +112,31 @@ if __name__ == "__main__":
 
     wumpusOneSpot += ")"
     print(wumpusOneSpot)
+
+    # rules for this specific instance of the wumpus world
+    with open("wumpusInstance.in", "r") as wi:
+        # rows specifiying which spots are visited
+        for i in range(N):
+            line = wi.readline()
+            for j in range(N):
+                if line[j] == "v":
+                    # coordinate system in this loop is a little flipped from wumpus coordinate system
+                    print("(or visited"+str(j+1)+str(N-i)+")")
+                else:
+                    print("(or (not visited"+str(j+1)+str(N-i)+"))")
+        
+        wi.readline()
+
+        # rows specifying breeze and stench locations
+        for i in range(N):
+            line = wi.readline()
+            for j in range(N):
+                if line[j] == "B":
+                    print("(or breezy"+str(j+1)+str(N-i)+")")
+                    print("(or (not stench"+str(j+1)+str(N-i)+"))")
+                elif line[j] == "S":
+                    print("(or stench"+str(j+1)+str(N-i)+")")
+                    print("(or (not breezy"+str(j+1)+str(N-i)+"))")
+                else:
+                    print("(or (not stench"+str(j+1)+str(N-i)+"))")
+                    print("(or (not breezy"+str(j+1)+str(N-i)+"))")

@@ -21,7 +21,7 @@ using namespace std;
 
 #define MAX_ITERS 10000
 
-set<Expr*> KBclauses;
+set<string> KBclauses;
 
 class ResPair {
 public:
@@ -84,7 +84,6 @@ bool resolvable(Expr* clause1, Expr* clause2) {
     vector<string> parts1 = tokenize(clause1->toString());
     vector<string> parts2 = tokenize(clause2->toString());
 
-    bool common = false;
     for (unsigned int i = 2; i < parts1.size()-1; i++) {
         if (parts1[i] == "not")
             negLits.insert(parts1[i+1]);
@@ -93,22 +92,14 @@ bool resolvable(Expr* clause1, Expr* clause2) {
     }
     for (unsigned int i = 2; i < parts2.size()-1; i++) {
         if (parts2[i] == "not" && posLits.count(parts2[i+1])) {
-            // if already a common one encountered, return false, can only be 1 common literal
-            if (common)
-                return false;
-            common = true;
+            return true;
         }
         else if (parts2[i] != "(" && parts2[i] != ")" && parts2[i-1] != "not" && negLits.count(parts2[i])) {
-            if (common)
-                return false;
-            common = true;
+            return true;
         }
     }
 
-    if (common)
-        return true;
-    else
-        return false;
+    return false;
 }
 
 /********************************
@@ -130,11 +121,11 @@ Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
 
     unsigned int i;
     for (i = 2; i < parts1.size()-1; i++) {
-        // if this is a "(" and the literal in this "(not <lit>)" is Prop, dont append these parts to newClause
+        // if this is a "(" and the literal in this "(not <lit>)" is Prop or seen before, dont append these parts to newClause
         if (parts1[i] == "(") {
-            if (parts1[i+1] == "not" && parts1[i+2] == Prop) {
+            if (parts1[i+1] == "not" && (parts1[i+2] == Prop || seenProps.count(parts1[i+2]))) {
                 seenProps.insert(parts1[i+2]);
-                i += 2;
+                i += 3;
             }
             else
                 newClause += "(";
@@ -148,11 +139,12 @@ Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
             seenProps.insert(parts1[i]);
         }
     }
+    
     for (i = 2; i < parts2.size()-1; i++) {
         if (parts2[i] == "(") {
-            if (parts2[i+1] == "not" && parts2[i+2] == Prop) {
+            if (parts2[i+1] == "not" && (parts2[i+2] == Prop || seenProps.count(parts2[i+2]))) {
                 seenProps.insert(parts2[i+2]);
-                i += 2;
+                i += 3;
             }
             else
                 newClause += "(";
@@ -180,6 +172,8 @@ Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
  * *****************************/
 bool validateClause(Expr* clause) {
     vector<string> parts = tokenize(clause->toString());
+
+    // invalid structure, return false
     if (parts[0] != "(" || parts[1] != "or" || parts[parts.size()-1] != ")")
         return false;
 
@@ -225,15 +219,10 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
         }
     }
 
-    // show the initial knowledge base
-    show_kb(KB, KBclauses);
-    cout << endl;
-    int nextSpot = KB.size();
-
     // negate the query and add it to the KB
     Expr* negQuery = negate_query(query);
     KB.push_back(negQuery);
-    KBclauses.insert(negQuery);
+    KBclauses.insert(negQuery->toString());
 
     // priority queue for the MCL heuristic
     priority_queue<ResPair, vector<ResPair>, decltype(&cmpRes)> newRes(cmpRes);
@@ -243,16 +232,21 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
         for (j = i+1; j < KB.size(); j++) {
             if (resolvable(KB[i], KB[j])) {
                 // get # of literals between the 2 clauses, create ResPair object
-                int len = get_MCL(KB[i], KB[j]);
+                int len = KB[i]->sub.size() + KB[j]->sub.size() - 1;
                 ResPair rp(i, j, len);
                 newRes.push(rp);
             }
         }
     }
 
+    // show the knowledge base
+    show_kb(KB, KBclauses);
+    cout << endl;
+    int nextSpot = KB.size();
+
     // go until just 2 remaining clauses, and if they cause a contradiction, return true
     int iter = 0;
-    while (!newRes.empty() && iter++ < MAX_ITERS) {
+    while (!newRes.empty() && iter < MAX_ITERS) {
         ResPair rp = newRes.top();
         newRes.pop();
         Expr* Ci = KB[rp.i];
@@ -262,25 +256,34 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
         vector<string> props = matchingPropositions(Ci, Cj);
         unsigned int P;
         for (P = 0; P < props.size(); P++) {
+            cout << "iteration=" << iter << ", clauses=" << KB.size() << endl;
+            cout << "resolving clauses " << rp.i << " and " << rp.j << ": " << Ci->toString() << " , " << Cj->toString() << endl;
             Expr* resolvent = resolve(Ci, Cj, props[P]);
-            if (resolvent -> toString() == "(or )")
+            cout << "resolvent = " << resolvent->toString() << endl;
+            if (resolvent -> toString() == "(or)") {
                 return true;
-            if (validateClause(resolvent) == false || KBclauses.count(resolvent))
+            }
+            if (validateClause(resolvent) == false || KBclauses.count(resolvent->toString())) {
+                cout << "resolvent is invalid or is already in the KB!!" << endl << endl;
                 continue;
-
+            }
+            
             // see if the resolvant is resolvable with any other clause in the KB            
             for (i = 0; i < KB.size(); i++) {
                 if (resolvable(KB[i], resolvent)) {
                     // get # of literals between the 2 clauses
-                    int len = get_MCL(KB[i], resolvent);
+                    int len = KB[i]->sub.size() + resolvent->sub.size() - 1;
                     ResPair rp(i, nextSpot, len);
                     newRes.push(rp);
                 }
             }
+            
+            cout << KB.size() << ". " << resolvent->toString() << endl << endl;
             KB.push_back(resolvent);
-            KBclauses.insert(resolvent);
+            KBclauses.insert(resolvent->toString());
             nextSpot++;
         }
+        iter++;
     }
     
     return false;
@@ -290,20 +293,20 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
 int main(int argc, char* argv[]) {
     try {
         // load the KB and get negated query
-        // vector<Expr*> KB = load_kb(argv[1]);
-        // string negQuery = argv[2];
+        vector<Expr*> KB = load_kb(argv[1]);
+        string negQuery = argv[2];
 
-        // // run resolution refutation
-        // if (resolution(KB, parse(negQuery))) {
-        //     cout << "success! derived empty clause, so Q is entailed" << endl;
-        // }
-        // else {
-        //     cout << "failure! empty clause could not be derived, so Q is not entailed" << endl;
-        // }
+        // run resolution refutation
+        if (resolution(KB, parse(negQuery))) {
+            cout << "success! derived empty clause, so Q is entailed" << endl;
+        }
+        else {
+            cout << "failure! empty clause could not be derived, so Q is not entailed" << endl;
+        }
 
 
         // Testing suite
-        // vector<Expr*> KB = load_kb("test.kb");
+        //vector<Expr*> KB = load_kb("test.kb");
         // cout << "Testing resolvable():" << endl;
         // cout << "args: " << KB[0]->toString() << ", " << KB[1]->toString() << endl;
         // assert(resolvable(KB[0], KB[1]) == true);

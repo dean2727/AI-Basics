@@ -81,9 +81,9 @@
 (or (not C2B) (not C3W) C1Y)
 
 # facts for the specific sammys sport shop problem
-O1Y
-L1W
-O2W
-L2Y
-O3Y
-L3B
+(or O1Y)
+(or L1W)
+(or O2W)
+(or L2Y)
+(or O3Y)
+(or L3B)

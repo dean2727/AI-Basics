@@ -39,7 +39,7 @@ bool Eq(Expr* a, Expr* b);
 
 vector<Expr*>load_kb(string fname);
 
-void show_kb(vector<Expr*>& KB, set<Expr*>& KBclauses);
+void show_kb(vector<Expr*>& KB, set<string>& KBclauses);
 
 Expr* negate_query(Expr* query);
 
