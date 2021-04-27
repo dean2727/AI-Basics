@@ -37,5 +37,5 @@ C2W. Here is my process for the wumpus world problem, given the inital configura
 4. Entail (not wumpus21) successfully (120 iterations)<br>
 5. Entail breezy31 successfully (256 iterations)<br>
 6. Add the fact "(not pit41)" to the KB<br>
-7. Entail "(not safe43)" successfully<br>
-8. Entail wumpus33 successfully<br>
+7. Entail "(not safe43)" successfully (509 iterations)<br>
+8. Entail wumpus33 successfully (170 iterations)<br>
