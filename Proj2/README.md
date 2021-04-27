@@ -1,4 +1,4 @@
-# Blocksworld A* Search
+# Project 2: Blocksworld A* Search
 The Blocksworld problem is an AI problem defined as follows: given an initial
 configuration of blocks, transform this state to a desired goal state of blocks
 by finding a sequence of block moves that get us to that state. This program aims
