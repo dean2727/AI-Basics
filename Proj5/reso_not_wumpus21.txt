@@ -1,0 +1,940 @@
+0. (or (not wumpus11) (not wumpus12))
+1. (or (not wumpus11) (not wumpus13))
+2. (or (not wumpus11) (not wumpus14))
+3. (or (not wumpus11) (not wumpus21))
+4. (or (not wumpus11) (not wumpus22))
+5. (or (not wumpus11) (not wumpus23))
+6. (or (not wumpus11) (not wumpus24))
+7. (or (not wumpus11) (not wumpus31))
+8. (or (not wumpus11) (not wumpus32))
+9. (or (not wumpus11) (not wumpus33))
+10. (or (not wumpus11) (not wumpus34))
+11. (or (not wumpus11) (not wumpus41))
+12. (or (not wumpus11) (not wumpus42))
+13. (or (not wumpus11) (not wumpus43))
+14. (or (not wumpus11) (not wumpus44))
+15. (or (not safe11) (not wumpus11))
+16. (or (not safe11) (not pit11))
+17. (or wumpus11 pit11 safe11)
+18. (or (not wumpus11) stench21)
+19. (or (not pit11) breezy21)
+20. (or (not wumpus11) stench12)
+21. (or (not pit11) breezy12)
+22. (or (not stench11) wumpus21 wumpus12)
+23. (or (not breezy11) pit21 pit12)
+24. (or (not wumpus12) (not wumpus13))
+25. (or (not wumpus12) (not wumpus14))
+26. (or (not wumpus12) (not wumpus21))
+27. (or (not wumpus12) (not wumpus22))
+28. (or (not wumpus12) (not wumpus23))
+29. (or (not wumpus12) (not wumpus24))
+30. (or (not wumpus12) (not wumpus31))
+31. (or (not wumpus12) (not wumpus32))
+32. (or (not wumpus12) (not wumpus33))
+33. (or (not wumpus12) (not wumpus34))
+34. (or (not wumpus12) (not wumpus41))
+35. (or (not wumpus12) (not wumpus42))
+36. (or (not wumpus12) (not wumpus43))
+37. (or (not wumpus12) (not wumpus44))
+38. (or (not safe12) (not wumpus12))
+39. (or (not safe12) (not pit12))
+40. (or wumpus12 pit12 safe12)
+41. (or (not wumpus12) stench22)
+42. (or (not pit12) breezy22)
+43. (or (not wumpus12) stench13)
+44. (or (not wumpus12) stench11)
+45. (or (not pit12) breezy13)
+46. (or (not pit12) breezy11)
+47. (or (not stench12) wumpus22 wumpus13 wumpus11)
+48. (or (not breezy12) pit22 pit13 pit11)
+49. (or (not wumpus13) (not wumpus14))
+50. (or (not wumpus13) (not wumpus21))
+51. (or (not wumpus13) (not wumpus22))
+52. (or (not wumpus13) (not wumpus23))
+53. (or (not wumpus13) (not wumpus24))
+54. (or (not wumpus13) (not wumpus31))
+55. (or (not wumpus13) (not wumpus32))
+56. (or (not wumpus13) (not wumpus33))
+57. (or (not wumpus13) (not wumpus34))
+58. (or (not wumpus13) (not wumpus41))
+59. (or (not wumpus13) (not wumpus42))
+60. (or (not wumpus13) (not wumpus43))
+61. (or (not wumpus13) (not wumpus44))
+62. (or (not safe13) (not wumpus13))
+63. (or (not safe13) (not pit13))
+64. (or wumpus13 pit13 safe13)
+65. (or (not wumpus13) stench23)
+66. (or (not pit13) breezy23)
+67. (or (not wumpus13) stench14)
+68. (or (not wumpus13) stench12)
+69. (or (not pit13) breezy14)
+70. (or (not pit13) breezy12)
+71. (or (not stench13) wumpus23 wumpus14 wumpus12)
+72. (or (not breezy13) pit23 pit14 pit12)
+73. (or (not wumpus14) (not wumpus21))
+74. (or (not wumpus14) (not wumpus22))
+75. (or (not wumpus14) (not wumpus23))
+76. (or (not wumpus14) (not wumpus24))
+77. (or (not wumpus14) (not wumpus31))
+78. (or (not wumpus14) (not wumpus32))
+79. (or (not wumpus14) (not wumpus33))
+80. (or (not wumpus14) (not wumpus34))
+81. (or (not wumpus14) (not wumpus41))
+82. (or (not wumpus14) (not wumpus42))
+83. (or (not wumpus14) (not wumpus43))
+84. (or (not wumpus14) (not wumpus44))
+85. (or (not safe14) (not wumpus14))
+86. (or (not safe14) (not pit14))
+87. (or wumpus14 pit14 safe14)
+88. (or (not wumpus14) stench24)
+89. (or (not pit14) breezy24)
+90. (or (not wumpus14) stench15)
+91. (or (not wumpus14) stench13)
+92. (or (not pit14) breezy15)
+93. (or (not pit14) breezy13)
+94. (or (not stench14) wumpus24 wumpus15 wumpus13)
+95. (or (not breezy14) pit24 pit15 pit13)
+96. (or (not wumpus21) (not wumpus22))
+97. (or (not wumpus21) (not wumpus23))
+98. (or (not wumpus21) (not wumpus24))
+99. (or (not wumpus21) (not wumpus31))
+100. (or (not wumpus21) (not wumpus32))
+101. (or (not wumpus21) (not wumpus33))
+102. (or (not wumpus21) (not wumpus34))
+103. (or (not wumpus21) (not wumpus41))
+104. (or (not wumpus21) (not wumpus42))
+105. (or (not wumpus21) (not wumpus43))
+106. (or (not wumpus21) (not wumpus44))
+107. (or (not safe21) (not wumpus21))
+108. (or (not safe21) (not pit21))
+109. (or wumpus21 pit21 safe21)
+110. (or (not wumpus21) stench31)
+111. (or (not wumpus21) stench11)
+112. (or (not pit21) breezy31)
+113. (or (not pit21) breezy11)
+114. (or (not wumpus21) stench22)
+115. (or (not pit21) breezy22)
+116. (or (not stench21) wumpus31 wumpus11 wumpus22)
+117. (or (not breezy21) pit31 pit11 pit22)
+118. (or (not wumpus22) (not wumpus23))
+119. (or (not wumpus22) (not wumpus24))
+120. (or (not wumpus22) (not wumpus31))
+121. (or (not wumpus22) (not wumpus32))
+122. (or (not wumpus22) (not wumpus33))
+123. (or (not wumpus22) (not wumpus34))
+124. (or (not wumpus22) (not wumpus41))
+125. (or (not wumpus22) (not wumpus42))
+126. (or (not wumpus22) (not wumpus43))
+127. (or (not wumpus22) (not wumpus44))
+128. (or (not safe22) (not wumpus22))
+129. (or (not safe22) (not pit22))
+130. (or wumpus22 pit22 safe22)
+131. (or (not wumpus22) stench32)
+132. (or (not wumpus22) stench12)
+133. (or (not pit22) breezy32)
+134. (or (not pit22) breezy12)
+135. (or (not wumpus22) stench23)
+136. (or (not wumpus22) stench21)
+137. (or (not pit22) breezy23)
+138. (or (not pit22) breezy21)
+139. (or (not stench22) wumpus32 wumpus12 wumpus23 wumpus21)
+140. (or (not breezy22) pit32 pit12 pit23 pit21)
+141. (or (not wumpus23) (not wumpus24))
+142. (or (not wumpus23) (not wumpus31))
+143. (or (not wumpus23) (not wumpus32))
+144. (or (not wumpus23) (not wumpus33))
+145. (or (not wumpus23) (not wumpus34))
+146. (or (not wumpus23) (not wumpus41))
+147. (or (not wumpus23) (not wumpus42))
+148. (or (not wumpus23) (not wumpus43))
+149. (or (not wumpus23) (not wumpus44))
+150. (or (not safe23) (not wumpus23))
+151. (or (not safe23) (not pit23))
+152. (or wumpus23 pit23 safe23)
+153. (or (not wumpus23) stench33)
+154. (or (not wumpus23) stench13)
+155. (or (not pit23) breezy33)
+156. (or (not pit23) breezy13)
+157. (or (not wumpus23) stench24)
+158. (or (not wumpus23) stench22)
+159. (or (not pit23) breezy24)
+160. (or (not pit23) breezy22)
+161. (or (not stench23) wumpus33 wumpus13 wumpus24 wumpus22)
+162. (or (not breezy23) pit33 pit13 pit24 pit22)
+163. (or (not wumpus24) (not wumpus31))
+164. (or (not wumpus24) (not wumpus32))
+165. (or (not wumpus24) (not wumpus33))
+166. (or (not wumpus24) (not wumpus34))
+167. (or (not wumpus24) (not wumpus41))
+168. (or (not wumpus24) (not wumpus42))
+169. (or (not wumpus24) (not wumpus43))
+170. (or (not wumpus24) (not wumpus44))
+171. (or (not safe24) (not wumpus24))
+172. (or (not safe24) (not pit24))
+173. (or wumpus24 pit24 safe24)
+174. (or (not wumpus24) stench34)
+175. (or (not wumpus24) stench14)
+176. (or (not pit24) breezy34)
+177. (or (not pit24) breezy14)
+178. (or (not wumpus24) stench25)
+179. (or (not wumpus24) stench23)
+180. (or (not pit24) breezy25)
+181. (or (not pit24) breezy23)
+182. (or (not stench24) wumpus34 wumpus14 wumpus25 wumpus23)
+183. (or (not breezy24) pit34 pit14 pit25 pit23)
+184. (or (not wumpus31) (not wumpus32))
+185. (or (not wumpus31) (not wumpus33))
+186. (or (not wumpus31) (not wumpus34))
+187. (or (not wumpus31) (not wumpus41))
+188. (or (not wumpus31) (not wumpus42))
+189. (or (not wumpus31) (not wumpus43))
+190. (or (not wumpus31) (not wumpus44))
+191. (or (not safe31) (not wumpus31))
+192. (or (not safe31) (not pit31))
+193. (or wumpus31 pit31 safe31)
+194. (or (not wumpus31) stench41)
+195. (or (not wumpus31) stench21)
+196. (or (not pit31) breezy41)
+197. (or (not pit31) breezy21)
+198. (or (not wumpus31) stench32)
+199. (or (not pit31) breezy32)
+200. (or (not stench31) wumpus41 wumpus21 wumpus32)
+201. (or (not breezy31) pit41 pit21 pit32)
+202. (or (not wumpus32) (not wumpus33))
+203. (or (not wumpus32) (not wumpus34))
+204. (or (not wumpus32) (not wumpus41))
+205. (or (not wumpus32) (not wumpus42))
+206. (or (not wumpus32) (not wumpus43))
+207. (or (not wumpus32) (not wumpus44))
+208. (or (not safe32) (not wumpus32))
+209. (or (not safe32) (not pit32))
+210. (or wumpus32 pit32 safe32)
+211. (or (not wumpus32) stench42)
+212. (or (not wumpus32) stench22)
+213. (or (not pit32) breezy42)
+214. (or (not pit32) breezy22)
+215. (or (not wumpus32) stench33)
+216. (or (not wumpus32) stench31)
+217. (or (not pit32) breezy33)
+218. (or (not pit32) breezy31)
+219. (or (not stench32) wumpus42 wumpus22 wumpus33 wumpus31)
+220. (or (not breezy32) pit42 pit22 pit33 pit31)
+221. (or (not wumpus33) (not wumpus34))
+222. (or (not wumpus33) (not wumpus41))
+223. (or (not wumpus33) (not wumpus42))
+224. (or (not wumpus33) (not wumpus43))
+225. (or (not wumpus33) (not wumpus44))
+226. (or (not safe33) (not wumpus33))
+227. (or (not safe33) (not pit33))
+228. (or wumpus33 pit33 safe33)
+229. (or (not wumpus33) stench43)
+230. (or (not wumpus33) stench23)
+231. (or (not pit33) breezy43)
+232. (or (not pit33) breezy23)
+233. (or (not wumpus33) stench34)
+234. (or (not wumpus33) stench32)
+235. (or (not pit33) breezy34)
+236. (or (not pit33) breezy32)
+237. (or (not stench33) wumpus43 wumpus23 wumpus34 wumpus32)
+238. (or (not breezy33) pit43 pit23 pit34 pit32)
+239. (or (not wumpus34) (not wumpus41))
+240. (or (not wumpus34) (not wumpus42))
+241. (or (not wumpus34) (not wumpus43))
+242. (or (not wumpus34) (not wumpus44))
+243. (or (not safe34) (not wumpus34))
+244. (or (not safe34) (not pit34))
+245. (or wumpus34 pit34 safe34)
+246. (or (not wumpus34) stench44)
+247. (or (not wumpus34) stench24)
+248. (or (not pit34) breezy44)
+249. (or (not pit34) breezy24)
+250. (or (not wumpus34) stench35)
+251. (or (not wumpus34) stench33)
+252. (or (not pit34) breezy35)
+253. (or (not pit34) breezy33)
+254. (or (not stench34) wumpus44 wumpus24 wumpus35 wumpus33)
+255. (or (not breezy34) pit44 pit24 pit35 pit33)
+256. (or (not wumpus41) (not wumpus42))
+257. (or (not wumpus41) (not wumpus43))
+258. (or (not wumpus41) (not wumpus44))
+259. (or (not safe41) (not wumpus41))
+260. (or (not safe41) (not pit41))
+261. (or wumpus41 pit41 safe41)
+262. (or (not wumpus41) stench31)
+263. (or (not pit41) breezy31)
+264. (or (not wumpus41) stench42)
+265. (or (not pit41) breezy42)
+266. (or (not stench41) wumpus31 wumpus42)
+267. (or (not breezy41) pit31 pit42)
+268. (or (not wumpus42) (not wumpus43))
+269. (or (not wumpus42) (not wumpus44))
+270. (or (not safe42) (not wumpus42))
+271. (or (not safe42) (not pit42))
+272. (or wumpus42 pit42 safe42)
+273. (or (not wumpus42) stench32)
+274. (or (not pit42) breezy32)
+275. (or (not wumpus42) stench41)
+276. (or (not pit42) breezy41)
+277. (or (not stench42) wumpus32 wumpus41)
+278. (or (not breezy42) pit32 pit41)
+279. (or (not wumpus43) (not wumpus44))
+280. (or (not safe43) (not wumpus43))
+281. (or (not safe43) (not pit43))
+282. (or wumpus43 pit43 safe43)
+283. (or (not wumpus43) stench33)
+284. (or (not pit43) breezy33)
+285. (or (not wumpus43) stench42)
+286. (or (not pit43) breezy42)
+287. (or (not stench43) wumpus33 wumpus42)
+288. (or (not breezy43) pit33 pit42)
+289. (or (not safe44) (not wumpus44))
+290. (or (not safe44) (not pit44))
+291. (or wumpus44 pit44 safe44)
+292. (or (not wumpus44) stench34)
+293. (or (not pit44) breezy34)
+294. (or (not wumpus44) stench43)
+295. (or (not pit44) breezy43)
+296. (or (not stench44) wumpus34 wumpus43)
+297. (or (not breezy44) pit34 pit43)
+298. (or (not pit14))
+299. (or (not wumpus14))
+300. (or (not pit24))
+301. (or (not wumpus24))
+302. (or (not pit34))
+303. (or (not wumpus34))
+304. (or (not pit44))
+305. (or (not wumpus44))
+306. (or (not pit13))
+307. (or (not wumpus13))
+308. (or (not pit12))
+309. (or (not wumpus12))
+310. (or (not pit22))
+311. (or (not wumpus22))
+312. (or (not pit32))
+313. (or (not wumpus32))
+314. (or (not pit42))
+315. (or (not wumpus42))
+316. (or (not stench14))
+317. (or (not breezy14))
+318. (or breezy24)
+319. (or (not stench24))
+320. (or stench34)
+321. (or (not breezy34))
+322. (or (not stench44))
+323. (or (not breezy44))
+324. (or breezy13)
+325. (or (not stench13))
+326. (or (not stench12))
+327. (or (not breezy12))
+328. (or breezy22)
+329. (or (not stench22))
+330. (or stench32)
+331. (or (not breezy32))
+332. (or breezy42)
+333. (or (not stench42))
+334. (or wumpus21)
+
+iteration=0, clauses=334
+resolving clauses 3 and 334: (or (not wumpus11) (not wumpus21)) , (or wumpus21)
+resolvent = (or (not wumpus11))
+335. (or (not wumpus11))
+
+iteration=1, clauses=335
+resolving clauses 22 and 309: (or (not stench11) wumpus21 wumpus12) , (or (not wumpus12))
+resolvent = (or (not stench11) wumpus21)
+336. (or (not stench11) wumpus21)
+
+iteration=2, clauses=336
+resolving clauses 40 and 308: (or wumpus12 pit12 safe12) , (or (not pit12))
+resolvent = (or wumpus12 safe12)
+337. (or wumpus12 safe12)
+
+iteration=3, clauses=337
+resolving clauses 40 and 309: (or wumpus12 pit12 safe12) , (or (not wumpus12))
+resolvent = (or pit12 safe12)
+338. (or pit12 safe12)
+
+iteration=4, clauses=338
+resolving clauses 173 and 300: (or wumpus24 pit24 safe24) , (or (not pit24))
+resolvent = (or wumpus24 safe24)
+339. (or wumpus24 safe24)
+
+iteration=5, clauses=339
+resolving clauses 173 and 301: (or wumpus24 pit24 safe24) , (or (not wumpus24))
+resolvent = (or pit24 safe24)
+340. (or pit24 safe24)
+
+iteration=6, clauses=340
+resolving clauses 175 and 316: (or (not wumpus24) stench14) , (or (not stench14))
+resolvent = (or (not wumpus24))
+resolvent is invalid or is already in the KB!!
+
+iteration=7, clauses=340
+resolving clauses 176 and 321: (or (not pit24) breezy34) , (or (not breezy34))
+resolvent = (or (not pit24))
+resolvent is invalid or is already in the KB!!
+
+iteration=8, clauses=340
+resolving clauses 177 and 317: (or (not pit24) breezy14) , (or (not breezy14))
+resolvent = (or (not pit24))
+resolvent is invalid or is already in the KB!!
+
+iteration=9, clauses=340
+resolving clauses 297 and 302: (or (not breezy44) pit34 pit43) , (or (not pit34))
+resolvent = (or (not breezy44) pit43)
+341. (or (not breezy44) pit43)
+
+iteration=10, clauses=341
+resolving clauses 41 and 329: (or (not wumpus12) stench22) , (or (not stench22))
+resolvent = (or (not wumpus12))
+resolvent is invalid or is already in the KB!!
+
+iteration=11, clauses=341
+resolving clauses 182 and 299: (or (not stench24) wumpus34 wumpus14 wumpus25 wumpus23) , (or (not wumpus14))
+resolvent = (or (not stench24) wumpus34 wumpus25 wumpus23)
+342. (or (not stench24) wumpus34 wumpus25 wumpus23)
+
+iteration=12, clauses=342
+resolving clauses 182 and 303: (or (not stench24) wumpus34 wumpus14 wumpus25 wumpus23) , (or (not wumpus34))
+resolvent = (or (not stench24) wumpus14 wumpus25 wumpus23)
+343. (or (not stench24) wumpus14 wumpus25 wumpus23)
+
+iteration=13, clauses=343
+resolving clauses 183 and 298: (or (not breezy24) pit34 pit14 pit25 pit23) , (or (not pit14))
+resolvent = (or (not breezy24) pit34 pit25 pit23)
+344. (or (not breezy24) pit34 pit25 pit23)
+
+iteration=14, clauses=344
+resolving clauses 183 and 302: (or (not breezy24) pit34 pit14 pit25 pit23) , (or (not pit34))
+resolvent = (or (not breezy24) pit14 pit25 pit23)
+345. (or (not breezy24) pit14 pit25 pit23)
+
+iteration=15, clauses=345
+resolving clauses 183 and 318: (or (not breezy24) pit34 pit14 pit25 pit23) , (or breezy24)
+resolvent = (or pit34 pit14 pit25 pit23)
+346. (or pit34 pit14 pit25 pit23)
+
+iteration=16, clauses=346
+resolving clauses 43 and 325: (or (not wumpus12) stench13) , (or (not stench13))
+resolvent = (or (not wumpus12))
+resolvent is invalid or is already in the KB!!
+
+iteration=17, clauses=346
+resolving clauses 87 and 298: (or wumpus14 pit14 safe14) , (or (not pit14))
+resolvent = (or wumpus14 safe14)
+347. (or wumpus14 safe14)
+
+iteration=18, clauses=347
+resolving clauses 87 and 299: (or wumpus14 pit14 safe14) , (or (not wumpus14))
+resolvent = (or pit14 safe14)
+348. (or pit14 safe14)
+
+iteration=19, clauses=348
+resolving clauses 88 and 319: (or (not wumpus14) stench24) , (or (not stench24))
+resolvent = (or (not wumpus14))
+resolvent is invalid or is already in the KB!!
+
+iteration=20, clauses=348
+resolving clauses 91 and 325: (or (not wumpus14) stench13) , (or (not stench13))
+resolvent = (or (not wumpus14))
+resolvent is invalid or is already in the KB!!
+
+iteration=21, clauses=348
+resolving clauses 199 and 331: (or (not pit31) breezy32) , (or (not breezy32))
+resolvent = (or (not pit31))
+349. (or (not pit31))
+
+iteration=22, clauses=349
+resolving clauses 94 and 301: (or (not stench14) wumpus24 wumpus15 wumpus13) , (or (not wumpus24))
+resolvent = (or (not stench14) wumpus15 wumpus13)
+350. (or (not stench14) wumpus15 wumpus13)
+
+iteration=23, clauses=350
+resolving clauses 200 and 313: (or (not stench31) wumpus41 wumpus21 wumpus32) , (or (not wumpus32))
+resolvent = (or (not stench31) wumpus41 wumpus21)
+351. (or (not stench31) wumpus41 wumpus21)
+
+iteration=24, clauses=351
+resolving clauses 94 and 307: (or (not stench14) wumpus24 wumpus15 wumpus13) , (or (not wumpus13))
+resolvent = (or (not stench14) wumpus24 wumpus15)
+352. (or (not stench14) wumpus24 wumpus15)
+
+iteration=25, clauses=352
+resolving clauses 201 and 312: (or (not breezy31) pit41 pit21 pit32) , (or (not pit32))
+resolvent = (or (not breezy31) pit41 pit21)
+353. (or (not breezy31) pit41 pit21)
+
+iteration=26, clauses=353
+resolving clauses 95 and 300: (or (not breezy14) pit24 pit15 pit13) , (or (not pit24))
+resolvent = (or (not breezy14) pit15 pit13)
+354. (or (not breezy14) pit15 pit13)
+
+iteration=27, clauses=354
+resolving clauses 95 and 306: (or (not breezy14) pit24 pit15 pit13) , (or (not pit13))
+resolvent = (or (not breezy14) pit24 pit15)
+355. (or (not breezy14) pit24 pit15)
+
+iteration=28, clauses=355
+resolving clauses 96 and 334: (or (not wumpus21) (not wumpus22)) , (or wumpus21)
+resolvent = (or (not wumpus22))
+resolvent is invalid or is already in the KB!!
+
+iteration=29, clauses=355
+resolving clauses 97 and 334: (or (not wumpus21) (not wumpus23)) , (or wumpus21)
+resolvent = (or (not wumpus23))
+356. (or (not wumpus23))
+
+iteration=30, clauses=356
+resolving clauses 98 and 334: (or (not wumpus21) (not wumpus24)) , (or wumpus21)
+resolvent = (or (not wumpus24))
+resolvent is invalid or is already in the KB!!
+
+iteration=31, clauses=356
+resolving clauses 210 and 312: (or wumpus32 pit32 safe32) , (or (not pit32))
+resolvent = (or wumpus32 safe32)
+357. (or wumpus32 safe32)
+
+iteration=32, clauses=357
+resolving clauses 210 and 313: (or wumpus32 pit32 safe32) , (or (not wumpus32))
+resolvent = (or pit32 safe32)
+358. (or pit32 safe32)
+
+iteration=33, clauses=358
+resolving clauses 211 and 333: (or (not wumpus32) stench42) , (or (not stench42))
+resolvent = (or (not wumpus32))
+resolvent is invalid or is already in the KB!!
+
+iteration=34, clauses=358
+resolving clauses 212 and 329: (or (not wumpus32) stench22) , (or (not stench22))
+resolvent = (or (not wumpus32))
+resolvent is invalid or is already in the KB!!
+
+iteration=35, clauses=358
+resolving clauses 99 and 334: (or (not wumpus21) (not wumpus31)) , (or wumpus21)
+resolvent = (or (not wumpus31))
+359. (or (not wumpus31))
+
+iteration=36, clauses=359
+resolving clauses 23 and 308: (or (not breezy11) pit21 pit12) , (or (not pit12))
+resolvent = (or (not breezy11) pit21)
+360. (or (not breezy11) pit21)
+
+iteration=37, clauses=360
+resolving clauses 47 and 307: (or (not stench12) wumpus22 wumpus13 wumpus11) , (or (not wumpus13))
+resolvent = (or (not stench12) wumpus22 wumpus11)
+361. (or (not stench12) wumpus22 wumpus11)
+
+iteration=38, clauses=361
+resolving clauses 47 and 311: (or (not stench12) wumpus22 wumpus13 wumpus11) , (or (not wumpus22))
+resolvent = (or (not stench12) wumpus13 wumpus11)
+362. (or (not stench12) wumpus13 wumpus11)
+
+iteration=39, clauses=362
+resolving clauses 100 and 334: (or (not wumpus21) (not wumpus32)) , (or wumpus21)
+resolvent = (or (not wumpus32))
+resolvent is invalid or is already in the KB!!
+
+iteration=40, clauses=362
+resolving clauses 219 and 311: (or (not stench32) wumpus42 wumpus22 wumpus33 wumpus31) , (or (not wumpus22))
+resolvent = (or (not stench32) wumpus42 wumpus33 wumpus31)
+363. (or (not stench32) wumpus42 wumpus33 wumpus31)
+
+iteration=41, clauses=363
+resolving clauses 219 and 315: (or (not stench32) wumpus42 wumpus22 wumpus33 wumpus31) , (or (not wumpus42))
+resolvent = (or (not stench32) wumpus22 wumpus33 wumpus31)
+364. (or (not stench32) wumpus22 wumpus33 wumpus31)
+
+iteration=42, clauses=364
+resolving clauses 219 and 330: (or (not stench32) wumpus42 wumpus22 wumpus33 wumpus31) , (or stench32)
+resolvent = (or wumpus42 wumpus22 wumpus33 wumpus31)
+365. (or wumpus42 wumpus22 wumpus33 wumpus31)
+
+iteration=43, clauses=365
+resolving clauses 101 and 334: (or (not wumpus21) (not wumpus33)) , (or wumpus21)
+resolvent = (or (not wumpus33))
+366. (or (not wumpus33))
+
+iteration=44, clauses=366
+resolving clauses 311 and 364: (or (not wumpus22)) , (or (not stench32) wumpus22 wumpus33 wumpus31)
+resolvent = (or (not stench32) wumpus33 wumpus31)
+367. (or (not stench32) wumpus33 wumpus31)
+
+iteration=45, clauses=367
+resolving clauses 330 and 364: (or stench32) , (or (not stench32) wumpus22 wumpus33 wumpus31)
+resolvent = (or wumpus22 wumpus33 wumpus31)
+368. (or wumpus22 wumpus33 wumpus31)
+
+iteration=46, clauses=368
+resolving clauses 359 and 364: (or (not wumpus31)) , (or (not stench32) wumpus22 wumpus33 wumpus31)
+resolvent = (or (not stench32) wumpus22 wumpus33)
+369. (or (not stench32) wumpus22 wumpus33)
+
+iteration=47, clauses=369
+resolving clauses 311 and 365: (or (not wumpus22)) , (or wumpus42 wumpus22 wumpus33 wumpus31)
+resolvent = (or wumpus42 wumpus33 wumpus31)
+370. (or wumpus42 wumpus33 wumpus31)
+
+iteration=48, clauses=370
+resolving clauses 315 and 365: (or (not wumpus42)) , (or wumpus42 wumpus22 wumpus33 wumpus31)
+resolvent = (or wumpus22 wumpus33 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=49, clauses=370
+resolving clauses 359 and 365: (or (not wumpus31)) , (or wumpus42 wumpus22 wumpus33 wumpus31)
+resolvent = (or wumpus42 wumpus22 wumpus33)
+371. (or wumpus42 wumpus22 wumpus33)
+
+iteration=50, clauses=371
+resolving clauses 161 and 366: (or (not stench23) wumpus33 wumpus13 wumpus24 wumpus22) , (or (not wumpus33))
+resolvent = (or (not stench23) wumpus13 wumpus24 wumpus22)
+372. (or (not stench23) wumpus13 wumpus24 wumpus22)
+
+iteration=51, clauses=372
+resolving clauses 219 and 366: (or (not stench32) wumpus42 wumpus22 wumpus33 wumpus31) , (or (not wumpus33))
+resolvent = (or (not stench32) wumpus42 wumpus22 wumpus31)
+373. (or (not stench32) wumpus42 wumpus22 wumpus31)
+
+iteration=52, clauses=373
+resolving clauses 228 and 366: (or wumpus33 pit33 safe33) , (or (not wumpus33))
+resolvent = (or pit33 safe33)
+374. (or pit33 safe33)
+
+iteration=53, clauses=374
+resolving clauses 254 and 366: (or (not stench34) wumpus44 wumpus24 wumpus35 wumpus33) , (or (not wumpus33))
+resolvent = (or (not stench34) wumpus44 wumpus24 wumpus35)
+375. (or (not stench34) wumpus44 wumpus24 wumpus35)
+
+iteration=54, clauses=375
+resolving clauses 287 and 366: (or (not stench43) wumpus33 wumpus42) , (or (not wumpus33))
+resolvent = (or (not stench43) wumpus42)
+376. (or (not stench43) wumpus42)
+
+iteration=55, clauses=376
+resolving clauses 363 and 366: (or (not stench32) wumpus42 wumpus33 wumpus31) , (or (not wumpus33))
+resolvent = (or (not stench32) wumpus42 wumpus31)
+377. (or (not stench32) wumpus42 wumpus31)
+
+iteration=56, clauses=377
+resolving clauses 364 and 366: (or (not stench32) wumpus22 wumpus33 wumpus31) , (or (not wumpus33))
+resolvent = (or (not stench32) wumpus22 wumpus31)
+378. (or (not stench32) wumpus22 wumpus31)
+
+iteration=57, clauses=378
+resolving clauses 365 and 366: (or wumpus42 wumpus22 wumpus33 wumpus31) , (or (not wumpus33))
+resolvent = (or wumpus42 wumpus22 wumpus31)
+379. (or wumpus42 wumpus22 wumpus31)
+
+iteration=58, clauses=379
+resolving clauses 330 and 367: (or stench32) , (or (not stench32) wumpus33 wumpus31)
+resolvent = (or wumpus33 wumpus31)
+380. (or wumpus33 wumpus31)
+
+iteration=59, clauses=380
+resolving clauses 359 and 367: (or (not wumpus31)) , (or (not stench32) wumpus33 wumpus31)
+resolvent = (or (not stench32) wumpus33)
+381. (or (not stench32) wumpus33)
+
+iteration=60, clauses=381
+resolving clauses 366 and 367: (or (not wumpus33)) , (or (not stench32) wumpus33 wumpus31)
+resolvent = (or (not stench32) wumpus31)
+382. (or (not stench32) wumpus31)
+
+iteration=61, clauses=382
+resolving clauses 311 and 368: (or (not wumpus22)) , (or wumpus22 wumpus33 wumpus31)
+resolvent = (or wumpus33 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=62, clauses=382
+resolving clauses 359 and 368: (or (not wumpus31)) , (or wumpus22 wumpus33 wumpus31)
+resolvent = (or wumpus22 wumpus33)
+383. (or wumpus22 wumpus33)
+
+iteration=63, clauses=383
+resolving clauses 366 and 368: (or (not wumpus33)) , (or wumpus22 wumpus33 wumpus31)
+resolvent = (or wumpus22 wumpus31)
+384. (or wumpus22 wumpus31)
+
+iteration=64, clauses=384
+resolving clauses 311 and 369: (or (not wumpus22)) , (or (not stench32) wumpus22 wumpus33)
+resolvent = (or (not stench32) wumpus33)
+resolvent is invalid or is already in the KB!!
+
+iteration=65, clauses=384
+resolving clauses 330 and 369: (or stench32) , (or (not stench32) wumpus22 wumpus33)
+resolvent = (or wumpus22 wumpus33)
+resolvent is invalid or is already in the KB!!
+
+iteration=66, clauses=384
+resolving clauses 366 and 369: (or (not wumpus33)) , (or (not stench32) wumpus22 wumpus33)
+resolvent = (or (not stench32) wumpus22)
+385. (or (not stench32) wumpus22)
+
+iteration=67, clauses=385
+resolving clauses 315 and 370: (or (not wumpus42)) , (or wumpus42 wumpus33 wumpus31)
+resolvent = (or wumpus33 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=68, clauses=385
+resolving clauses 359 and 370: (or (not wumpus31)) , (or wumpus42 wumpus33 wumpus31)
+resolvent = (or wumpus42 wumpus33)
+386. (or wumpus42 wumpus33)
+
+iteration=69, clauses=386
+resolving clauses 366 and 370: (or (not wumpus33)) , (or wumpus42 wumpus33 wumpus31)
+resolvent = (or wumpus42 wumpus31)
+387. (or wumpus42 wumpus31)
+
+iteration=70, clauses=387
+resolving clauses 311 and 371: (or (not wumpus22)) , (or wumpus42 wumpus22 wumpus33)
+resolvent = (or wumpus42 wumpus33)
+resolvent is invalid or is already in the KB!!
+
+iteration=71, clauses=387
+resolving clauses 315 and 371: (or (not wumpus42)) , (or wumpus42 wumpus22 wumpus33)
+resolvent = (or wumpus22 wumpus33)
+resolvent is invalid or is already in the KB!!
+
+iteration=72, clauses=387
+resolving clauses 366 and 371: (or (not wumpus33)) , (or wumpus42 wumpus22 wumpus33)
+resolvent = (or wumpus42 wumpus22)
+388. (or wumpus42 wumpus22)
+
+iteration=73, clauses=388
+resolving clauses 301 and 372: (or (not wumpus24)) , (or (not stench23) wumpus13 wumpus24 wumpus22)
+resolvent = (or (not stench23) wumpus13 wumpus22)
+389. (or (not stench23) wumpus13 wumpus22)
+
+iteration=74, clauses=389
+resolving clauses 307 and 372: (or (not wumpus13)) , (or (not stench23) wumpus13 wumpus24 wumpus22)
+resolvent = (or (not stench23) wumpus24 wumpus22)
+390. (or (not stench23) wumpus24 wumpus22)
+
+iteration=75, clauses=390
+resolving clauses 311 and 372: (or (not wumpus22)) , (or (not stench23) wumpus13 wumpus24 wumpus22)
+resolvent = (or (not stench23) wumpus13 wumpus24)
+391. (or (not stench23) wumpus13 wumpus24)
+
+iteration=76, clauses=391
+resolving clauses 311 and 373: (or (not wumpus22)) , (or (not stench32) wumpus42 wumpus22 wumpus31)
+resolvent = (or (not stench32) wumpus42 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=77, clauses=391
+resolving clauses 315 and 373: (or (not wumpus42)) , (or (not stench32) wumpus42 wumpus22 wumpus31)
+resolvent = (or (not stench32) wumpus22 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=78, clauses=391
+resolving clauses 330 and 373: (or stench32) , (or (not stench32) wumpus42 wumpus22 wumpus31)
+resolvent = (or wumpus42 wumpus22 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=79, clauses=391
+resolving clauses 359 and 373: (or (not wumpus31)) , (or (not stench32) wumpus42 wumpus22 wumpus31)
+resolvent = (or (not stench32) wumpus42 wumpus22)
+392. (or (not stench32) wumpus42 wumpus22)
+
+iteration=80, clauses=392
+resolving clauses 220 and 310: (or (not breezy32) pit42 pit22 pit33 pit31) , (or (not pit22))
+resolvent = (or (not breezy32) pit42 pit33 pit31)
+393. (or (not breezy32) pit42 pit33 pit31)
+
+iteration=81, clauses=393
+resolving clauses 220 and 314: (or (not breezy32) pit42 pit22 pit33 pit31) , (or (not pit42))
+resolvent = (or (not breezy32) pit22 pit33 pit31)
+394. (or (not breezy32) pit22 pit33 pit31)
+
+iteration=82, clauses=394
+resolving clauses 48 and 306: (or (not breezy12) pit22 pit13 pit11) , (or (not pit13))
+resolvent = (or (not breezy12) pit22 pit11)
+395. (or (not breezy12) pit22 pit11)
+
+iteration=83, clauses=395
+resolving clauses 301 and 375: (or (not wumpus24)) , (or (not stench34) wumpus44 wumpus24 wumpus35)
+resolvent = (or (not stench34) wumpus44 wumpus35)
+396. (or (not stench34) wumpus44 wumpus35)
+
+iteration=84, clauses=396
+resolving clauses 305 and 375: (or (not wumpus44)) , (or (not stench34) wumpus44 wumpus24 wumpus35)
+resolvent = (or (not stench34) wumpus24 wumpus35)
+397. (or (not stench34) wumpus24 wumpus35)
+
+iteration=85, clauses=397
+resolving clauses 320 and 375: (or stench34) , (or (not stench34) wumpus44 wumpus24 wumpus35)
+resolvent = (or wumpus44 wumpus24 wumpus35)
+398. (or wumpus44 wumpus24 wumpus35)
+
+iteration=86, clauses=398
+resolving clauses 315 and 376: (or (not wumpus42)) , (or (not stench43) wumpus42)
+resolvent = (or (not stench43))
+399. (or (not stench43))
+
+iteration=87, clauses=399
+resolving clauses 102 and 334: (or (not wumpus21) (not wumpus34)) , (or wumpus21)
+resolvent = (or (not wumpus34))
+resolvent is invalid or is already in the KB!!
+
+iteration=88, clauses=399
+resolving clauses 315 and 377: (or (not wumpus42)) , (or (not stench32) wumpus42 wumpus31)
+resolvent = (or (not stench32) wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=89, clauses=399
+resolving clauses 330 and 377: (or stench32) , (or (not stench32) wumpus42 wumpus31)
+resolvent = (or wumpus42 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=90, clauses=399
+resolving clauses 359 and 377: (or (not wumpus31)) , (or (not stench32) wumpus42 wumpus31)
+resolvent = (or (not stench32) wumpus42)
+400. (or (not stench32) wumpus42)
+
+iteration=91, clauses=400
+resolving clauses 48 and 310: (or (not breezy12) pit22 pit13 pit11) , (or (not pit22))
+resolvent = (or (not breezy12) pit13 pit11)
+401. (or (not breezy12) pit13 pit11)
+
+iteration=92, clauses=401
+resolving clauses 103 and 334: (or (not wumpus21) (not wumpus41)) , (or wumpus21)
+resolvent = (or (not wumpus41))
+402. (or (not wumpus41))
+
+iteration=93, clauses=402
+resolving clauses 311 and 378: (or (not wumpus22)) , (or (not stench32) wumpus22 wumpus31)
+resolvent = (or (not stench32) wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=94, clauses=402
+resolving clauses 330 and 378: (or stench32) , (or (not stench32) wumpus22 wumpus31)
+resolvent = (or wumpus22 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=95, clauses=402
+resolving clauses 359 and 378: (or (not wumpus31)) , (or (not stench32) wumpus22 wumpus31)
+resolvent = (or (not stench32) wumpus22)
+resolvent is invalid or is already in the KB!!
+
+iteration=96, clauses=402
+resolving clauses 50 and 334: (or (not wumpus13) (not wumpus21)) , (or wumpus21)
+resolvent = (or (not wumpus13))
+resolvent is invalid or is already in the KB!!
+
+iteration=97, clauses=402
+resolving clauses 104 and 334: (or (not wumpus21) (not wumpus42)) , (or wumpus21)
+resolvent = (or (not wumpus42))
+resolvent is invalid or is already in the KB!!
+
+iteration=98, clauses=402
+resolving clauses 235 and 321: (or (not pit33) breezy34) , (or (not breezy34))
+resolvent = (or (not pit33))
+403. (or (not pit33))
+
+iteration=99, clauses=403
+resolving clauses 105 and 334: (or (not wumpus21) (not wumpus43)) , (or wumpus21)
+resolvent = (or (not wumpus43))
+404. (or (not wumpus43))
+
+iteration=100, clauses=404
+resolving clauses 236 and 331: (or (not pit33) breezy32) , (or (not breezy32))
+resolvent = (or (not pit33))
+resolvent is invalid or is already in the KB!!
+
+iteration=101, clauses=404
+resolving clauses 311 and 379: (or (not wumpus22)) , (or wumpus42 wumpus22 wumpus31)
+resolvent = (or wumpus42 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=102, clauses=404
+resolving clauses 315 and 379: (or (not wumpus42)) , (or wumpus42 wumpus22 wumpus31)
+resolvent = (or wumpus22 wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=103, clauses=404
+resolving clauses 359 and 379: (or (not wumpus31)) , (or wumpus42 wumpus22 wumpus31)
+resolvent = (or wumpus42 wumpus22)
+resolvent is invalid or is already in the KB!!
+
+iteration=104, clauses=404
+resolving clauses 106 and 334: (or (not wumpus21) (not wumpus44)) , (or wumpus21)
+resolvent = (or (not wumpus44))
+resolvent is invalid or is already in the KB!!
+
+iteration=105, clauses=404
+resolving clauses 107 and 334: (or (not safe21) (not wumpus21)) , (or wumpus21)
+resolvent = (or (not safe21))
+405. (or (not safe21))
+
+iteration=106, clauses=405
+resolving clauses 237 and 303: (or (not stench33) wumpus43 wumpus23 wumpus34 wumpus32) , (or (not wumpus34))
+resolvent = (or (not stench33) wumpus43 wumpus23 wumpus32)
+406. (or (not stench33) wumpus43 wumpus23 wumpus32)
+
+iteration=107, clauses=406
+resolving clauses 237 and 313: (or (not stench33) wumpus43 wumpus23 wumpus34 wumpus32) , (or (not wumpus32))
+resolvent = (or (not stench33) wumpus43 wumpus23 wumpus34)
+407. (or (not stench33) wumpus43 wumpus23 wumpus34)
+
+iteration=108, clauses=407
+resolving clauses 394 and 403: (or (not breezy32) pit22 pit33 pit31) , (or (not pit33))
+resolvent = (or (not breezy32) pit22 pit31)
+408. (or (not breezy32) pit22 pit31)
+
+iteration=109, clauses=408
+resolving clauses 359 and 380: (or (not wumpus31)) , (or wumpus33 wumpus31)
+resolvent = (or wumpus33)
+409. (or wumpus33)
+
+iteration=110, clauses=409
+resolving clauses 366 and 380: (or (not wumpus33)) , (or wumpus33 wumpus31)
+resolvent = (or wumpus31)
+410. (or wumpus31)
+
+iteration=111, clauses=410
+resolving clauses 237 and 404: (or (not stench33) wumpus43 wumpus23 wumpus34 wumpus32) , (or (not wumpus43))
+resolvent = (or (not stench33) wumpus23 wumpus34 wumpus32)
+411. (or (not stench33) wumpus23 wumpus34 wumpus32)
+
+iteration=112, clauses=411
+resolving clauses 374 and 403: (or pit33 safe33) , (or (not pit33))
+resolvent = (or safe33)
+412. (or safe33)
+
+iteration=113, clauses=412
+resolving clauses 238 and 302: (or (not breezy33) pit43 pit23 pit34 pit32) , (or (not pit34))
+resolvent = (or (not breezy33) pit43 pit23 pit32)
+413. (or (not breezy33) pit43 pit23 pit32)
+
+iteration=114, clauses=413
+resolving clauses 238 and 312: (or (not breezy33) pit43 pit23 pit34 pit32) , (or (not pit32))
+resolvent = (or (not breezy33) pit43 pit23 pit34)
+414. (or (not breezy33) pit43 pit23 pit34)
+
+iteration=115, clauses=414
+resolving clauses 109 and 405: (or wumpus21 pit21 safe21) , (or (not safe21))
+resolvent = (or wumpus21 pit21)
+415. (or wumpus21 pit21)
+
+iteration=116, clauses=415
+resolving clauses 330 and 381: (or stench32) , (or (not stench32) wumpus33)
+resolvent = (or wumpus33)
+resolvent is invalid or is already in the KB!!
+
+iteration=117, clauses=415
+resolving clauses 366 and 381: (or (not wumpus33)) , (or (not stench32) wumpus33)
+resolvent = (or (not stench32))
+416. (or (not stench32))
+
+iteration=118, clauses=416
+resolving clauses 330 and 382: (or stench32) , (or (not stench32) wumpus31)
+resolvent = (or wumpus31)
+resolvent is invalid or is already in the KB!!
+
+iteration=119, clauses=416
+resolving clauses 359 and 382: (or (not wumpus31)) , (or (not stench32) wumpus31)
+resolvent = (or (not stench32))
+resolvent is invalid or is already in the KB!!
+
+iteration=120, clauses=416
+resolving clauses 359 and 410: (or (not wumpus31)) , (or wumpus31)
+resolvent = (or)
+success! derived empty clause, so Q is entailed

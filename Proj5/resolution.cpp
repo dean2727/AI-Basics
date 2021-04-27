@@ -5,9 +5,8 @@
  * class, which identifies a pair of clauses during each step of 
  * the procedure, as well as some helper functions. The algorithm
  * uses a minimum clause length heuristic, a generalization of the 
- * unit-clause heuristic, which will take give priority to pairs
- * of clauses that have the shortest total length and where 1 of the
- * clauses is a unit clause 
+ * unit-clause heuristic, which will give priority to pairs
+ * of clauses wherein 1 of them is of least length
  * Name: Dean Orenstein
  * Class: CSCE 420 500
  * Date: 04/28/2021
@@ -58,10 +57,12 @@ vector<string> matchingPropositions(Expr* clause1, Expr* clause2) {
             posLits.insert(parts1[i]);
     }
     for (unsigned int i = 2; i < parts2.size()-1; i++) {
-        if (parts2[i] == "not" && posLits.count(parts2[i+1]))
+        if (parts2[i] == "not" && posLits.count(parts2[i+1])) {
             ret.push_back(parts2[i+1]);
-        else if (parts2[i] != "(" && parts2[i] != ")" && parts2[i-1] != "not" && negLits.count(parts2[i]))
+        }
+        else if (parts2[i] != "(" && parts2[i] != ")" && parts2[i-1] != "not" && negLits.count(parts2[i])) {
             ret.push_back(parts2[i]);
+        }
     }
 
     // remove any duplicates
@@ -121,10 +122,9 @@ Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
 
     unsigned int i;
     for (i = 2; i < parts1.size()-1; i++) {
-        // if this is a "(" and the literal in this "(not <lit>)" is Prop or seen before, dont append these parts to newClause
+        // if this is a "(" and the literal in this "(not <lit>)" is Prop, dont append these parts to newClause
         if (parts1[i] == "(") {
-            if (parts1[i+1] == "not" && (parts1[i+2] == Prop || seenProps.count(parts1[i+2]))) {
-                seenProps.insert(parts1[i+2]);
+            if (parts1[i+1] == "not" && (parts1[i+2] == Prop)) {
                 i += 3;
             }
             else
@@ -134,16 +134,14 @@ Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
             newClause += parts1[i] + " ";
         // otherwise, just see if this part (that is a potential positive literal) isnt Prop
         else {
-            if (parts1[i] != Prop && !seenProps.count(parts1[i]))
+            if (parts1[i] != Prop)
                 newClause += parts1[i] + " ";
-            seenProps.insert(parts1[i]);
         }
     }
     
     for (i = 2; i < parts2.size()-1; i++) {
         if (parts2[i] == "(") {
-            if (parts2[i+1] == "not" && (parts2[i+2] == Prop || seenProps.count(parts2[i+2]))) {
-                seenProps.insert(parts2[i+2]);
+            if (parts2[i+1] == "not" && (parts2[i+2] == Prop)) {
                 i += 3;
             }
             else
@@ -152,9 +150,8 @@ Expr* resolve(Expr* clause1, Expr* clause2, string Prop) {
         else if (parts2[i] == ")" || parts2[i] == "not")
             newClause += parts2[i] + " ";
         else {
-            if (parts2[i] != Prop && !seenProps.count(parts2[i]))
+            if (parts2[i] != Prop)
                 newClause += parts2[i] + " ";
-            seenProps.insert(parts2[i]);
         }
     }
 
@@ -189,10 +186,12 @@ bool validateClause(Expr* clause) {
             // positive and negative literal both in same clause
             if (seenLits.count(parts[i+1]))
                 return false;
+            seenLits.insert(parts[i+1]);
         }
         else {
-            if (parts[i-1] != "not")
-                seenLits.insert(parts[i]);
+            if (parts[i-1] != "not" && seenLits.count(parts[i]))
+                return false;
+            seenLits.insert(parts[i]);
         }
     }
 
@@ -210,6 +209,11 @@ bool validateClause(Expr* clause) {
  * 1: clause
  * *****************************/
 bool resolution(vector<Expr*>& KB, Expr* query) {
+    // negate the query and add it to the KB
+    Expr* negQuery = negate_query(query);
+    KB.push_back(negQuery);
+    KBclauses.insert(negQuery->toString());
+
     // validate the clauses
     unsigned int i, j;
     for (i = 0; i < KB.size(); i++) {
@@ -219,10 +223,10 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
         }
     }
 
-    // negate the query and add it to the KB
-    Expr* negQuery = negate_query(query);
-    KB.push_back(negQuery);
-    KBclauses.insert(negQuery->toString());
+    // show the knowledge base
+    show_kb(KB, KBclauses);
+    cout << endl;
+    int nextSpot = KB.size();
 
     // priority queue for the MCL heuristic
     priority_queue<ResPair, vector<ResPair>, decltype(&cmpRes)> newRes(cmpRes);
@@ -231,57 +235,52 @@ bool resolution(vector<Expr*>& KB, Expr* query) {
     for (i = 0; i < KB.size(); i++) {
         for (j = i+1; j < KB.size(); j++) {
             if (resolvable(KB[i], KB[j])) {
-                // get # of literals between the 2 clauses, create ResPair object
-                int len = KB[i]->sub.size() + KB[j]->sub.size() - 1;
+                // get min # of literals between the 2 clauses, create ResPair object
+                int len = min(KB[i]->sub.size(), KB[j]->sub.size());
                 ResPair rp(i, j, len);
                 newRes.push(rp);
             }
         }
     }
 
-    // show the knowledge base
-    show_kb(KB, KBclauses);
-    cout << endl;
-    int nextSpot = KB.size();
-
     // go until just 2 remaining clauses, and if they cause a contradiction, return true
     int iter = 0;
     while (!newRes.empty() && iter < MAX_ITERS) {
+        //if (iter % 1000 == 0) cout << iter << endl;
         ResPair rp = newRes.top();
         newRes.pop();
         Expr* Ci = KB[rp.i];
         Expr* Cj = KB[rp.j];
+        cout << "iteration=" << iter << ", clauses=" << nextSpot-1 << "\n";
+        cout << "resolving clauses " << rp.i << " and " << rp.j << ": " << Ci->toString() << " , " << Cj->toString() << "\n";
 
         // let Props be a list of props that appear in both clauses as opposite literals
         vector<string> props = matchingPropositions(Ci, Cj);
         unsigned int P;
         for (P = 0; P < props.size(); P++) {
-            cout << "iteration=" << iter << ", clauses=" << KB.size() << endl;
-            cout << "resolving clauses " << rp.i << " and " << rp.j << ": " << Ci->toString() << " , " << Cj->toString() << endl;
             Expr* resolvent = resolve(Ci, Cj, props[P]);
-            cout << "resolvent = " << resolvent->toString() << endl;
+            cout << "resolvent = " << resolvent->toString() << "\n";
             if (resolvent -> toString() == "(or)") {
                 return true;
             }
-            if (validateClause(resolvent) == false || KBclauses.count(resolvent->toString())) {
-                cout << "resolvent is invalid or is already in the KB!!" << endl << endl;
-                continue;
-            }
-            
-            // see if the resolvant is resolvable with any other clause in the KB            
-            for (i = 0; i < KB.size(); i++) {
-                if (resolvable(KB[i], resolvent)) {
-                    // get # of literals between the 2 clauses
-                    int len = KB[i]->sub.size() + resolvent->sub.size() - 1;
-                    ResPair rp(i, nextSpot, len);
-                    newRes.push(rp);
+            if (validateClause(resolvent) == true && !KBclauses.count(resolvent->toString())) {
+                // see if the resolvant is resolvable with any other clause in the KB            
+                for (i = 0; i < KB.size(); i++) {
+                    if (resolvable(KB[i], resolvent)) {
+                        int len = min(KB[i]->sub.size(), resolvent->sub.size());
+                        ResPair rp(i, nextSpot, len);
+                        newRes.push(rp);
+                    }
                 }
+                
+                cout << nextSpot << ". " << resolvent->toString() << "\n\n";
+                KB.push_back(resolvent);
+                KBclauses.insert(resolvent->toString());
+                nextSpot++;
             }
-            
-            cout << KB.size() << ". " << resolvent->toString() << endl << endl;
-            KB.push_back(resolvent);
-            KBclauses.insert(resolvent->toString());
-            nextSpot++;
+            else {
+                cout << "resolvent is invalid or is already in the KB!!\n\n";
+            }
         }
         iter++;
     }
@@ -304,7 +303,6 @@ int main(int argc, char* argv[]) {
             cout << "failure! empty clause could not be derived, so Q is not entailed" << endl;
         }
 
-
         // Testing suite
         //vector<Expr*> KB = load_kb("test.kb");
         // cout << "Testing resolvable():" << endl;
@@ -315,7 +313,7 @@ int main(int argc, char* argv[]) {
         // cout << "Testing matchingPropositions():" << endl;
         // cout << "args: " << KB[0]->toString() << ", " << KB[1]->toString() << endl;
         // vector<string> mp = matchingPropositions(KB[0], KB[1]);
-        // cout << mp[0] << endl << endl;
+        // cout << mp.size() << endl << endl;
 
         // cout << "Testing resolve():" << endl;
         // cout << "args: " << KB[0]->toString() << ", " << KB[1]->toString() << ", " << mp[0] << endl;

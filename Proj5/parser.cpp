@@ -144,12 +144,14 @@ Expr* negate_query(Expr* query) {
   string negQuery = "(or ";
 
   // if query starts with a "not", can just replace this with an "or" (double negation)
-  if (parts[1] != "not") negQuery += "(not ";  
-
-  for (unsigned int i=0 ; i<parts.size() ; i++) negQuery += parts[i] + " "; 
-
-  if (parts[1] != "not") negQuery += ")";
-  negQuery += ")";
+  if (parts.size() > 2 && parts[2] != "not")
+  {
+    negQuery += parts[2] + ")";  
+  }
+  else
+  {
+    negQuery += "(not " + parts[0] + "))";
+  }
 
   return parse(negQuery);
 }
