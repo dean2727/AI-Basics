@@ -1,0 +1,138 @@
+0. (or (not C1W) (not C2W))
+1. (or (not C1W) (not C3W))
+2. (or (not C2W) (not C1W))
+3. (or (not C2W) (not C3W))
+4. (or (not C3W) (not C1W))
+5. (or (not C3W) (not C2W))
+6. (or (not C1Y) (not C2Y))
+7. (or (not C1Y) (not C3Y))
+8. (or (not C2Y) (not C1Y))
+9. (or (not C2Y) (not C3Y))
+10. (or (not C3Y) (not C1Y))
+11. (or (not C3Y) (not C2Y))
+12. (or (not C1B) (not C2B))
+13. (or (not C1B) (not C3B))
+14. (or (not C2B) (not C1B))
+15. (or (not C2B) (not C3B))
+16. (or (not C3B) (not C1B))
+17. (or (not C3B) (not C2B))
+18. (or C1Y C2Y C3Y)
+19. (or C1W C2W C3W)
+20. (or C1B C2B C3B)
+21. (or (not L1Y) (not O1W) C1W C1B)
+22. (or (not L2Y) (not O2W) C2W C2B)
+23. (or (not L3Y) (not O3W) C3W C3B)
+24. (or (not L1W) (not O1Y) C1Y C1B)
+25. (or (not L2W) (not O2Y) C2Y C2B)
+26. (or (not L3W) (not O3Y) C3Y C3B)
+27. (or (not L1B) (not O1Y) C1Y)
+28. (or (not L2B) (not O2Y) C2Y)
+29. (or (not L3B) (not O3Y) C3Y)
+30. (or (not L1B) (not O1W) C1W)
+31. (or (not L2B) (not O2W) C2W)
+32. (or (not L3B) (not O3W) C3W)
+33. (or (not C1Y) (not C2W) C3B)
+34. (or (not C1W) (not C2Y) C3B)
+35. (or (not C1Y) (not C2B) C3W)
+36. (or (not C1B) (not C2Y) C3W)
+37. (or (not C1W) (not C2B) C3Y)
+38. (or (not C1B) (not C2W) C3Y)
+39. (or (not C1Y) (not C3W) C2B)
+40. (or (not C1W) (not C3Y) C2B)
+41. (or (not C1Y) (not C3B) C2W)
+42. (or (not C1B) (not C3Y) C2W)
+43. (or (not C1W) (not C3B) C2Y)
+44. (or (not C1B) (not C3W) C2Y)
+45. (or (not C2Y) (not C3W) C1B)
+46. (or (not C2W) (not C3Y) C1B)
+47. (or (not C2Y) (not C3B) C1W)
+48. (or (not C2B) (not C3Y) C1W)
+49. (or (not C2W) (not C3B) C1Y)
+50. (or (not C2B) (not C3W) C1Y)
+51. (or O1Y)
+52. (or L1W)
+53. (or O2W)
+54. (or L2Y)
+55. (or O3Y)
+56. (or L3B)
+57. (or (not C2W))
+
+iteration=0, clauses=58
+resolving clauses 19 and 57: (or C1W C2W C3W) , (or (not C2W))
+resolvent = (or C1W C3W)
+58. (or C1W C3W)
+
+iteration=1, clauses=59
+resolving clauses 27 and 51: (or (not L1B) (not O1Y) C1Y) , (or O1Y)
+resolvent = (or (not L1B) C1Y)
+59. (or (not L1B) C1Y)
+
+iteration=2, clauses=60
+resolving clauses 29 and 55: (or (not L3B) (not O3Y) C3Y) , (or O3Y)
+resolvent = (or (not L3B) C3Y)
+60. (or (not L3B) C3Y)
+
+iteration=3, clauses=61
+resolving clauses 56 and 60: (or L3B) , (or (not L3B) C3Y)
+resolvent = (or C3Y)
+61. (or C3Y)
+
+iteration=4, clauses=62
+resolving clauses 7 and 61: (or (not C1Y) (not C3Y)) , (or C3Y)
+resolvent = (or (not C1Y))
+62. (or (not C1Y))
+
+iteration=5, clauses=63
+resolving clauses 9 and 61: (or (not C2Y) (not C3Y)) , (or C3Y)
+resolvent = (or (not C2Y))
+63. (or (not C2Y))
+
+iteration=6, clauses=64
+resolving clauses 10 and 61: (or (not C3Y) (not C1Y)) , (or C3Y)
+resolvent = (or (not C1Y))
+resolvent is invalid or is already in the KB!!
+
+iteration=7, clauses=64
+resolving clauses 11 and 61: (or (not C3Y) (not C2Y)) , (or C3Y)
+resolvent = (or (not C2Y))
+resolvent is invalid or is already in the KB!!
+
+iteration=8, clauses=64
+resolving clauses 59 and 62: (or (not L1B) C1Y) , (or (not C1Y))
+resolvent = (or (not L1B))
+64. (or (not L1B))
+
+iteration=9, clauses=65
+resolving clauses 32 and 56: (or (not L3B) (not O3W) C3W) , (or L3B)
+resolvent = (or (not O3W) C3W)
+65. (or (not O3W) C3W)
+
+iteration=10, clauses=66
+resolving clauses 42 and 57: (or (not C1B) (not C3Y) C2W) , (or (not C2W))
+resolvent = (or (not C1B) (not C3Y))
+66. (or (not C1B) (not C3Y))
+
+iteration=11, clauses=67
+resolving clauses 61 and 66: (or C3Y) , (or (not C1B) (not C3Y))
+resolvent = (or (not C1B))
+67. (or (not C1B))
+
+iteration=12, clauses=68
+resolving clauses 1 and 58: (or (not C1W) (not C3W)) , (or C1W C3W)
+resolvent = (or (not C3W))
+68. (or (not C3W))
+
+iteration=12, clauses=69
+resolving clauses 1 and 58: (or (not C1W) (not C3W)) , (or C1W C3W)
+resolvent = (or (not C1W))
+69. (or (not C1W))
+
+iteration=13, clauses=70
+resolving clauses 58 and 68: (or C1W C3W) , (or (not C3W))
+resolvent = (or C1W)
+70. (or C1W)
+
+iteration=14, clauses=71
+resolving clauses 69 and 70: (or (not C1W)) , (or C1W)
+resolvent = (or)
+success! derived empty clause, so Q is entailed
