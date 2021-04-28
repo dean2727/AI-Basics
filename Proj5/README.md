@@ -29,7 +29,7 @@ file for you to use when running the main algorithm.
 ## Results
 Several .txt files starting with "reso" are provided, which show the output of the program 
 for the aforementioned problems. One can create more output files by redirecting the output
-on new executions. "reso_sammys.txt" shows the output for the Sammy's problem, which entails
+on new executions. "reso_sammys.txt" shows the output for the Sammy's problem (21 iterations for success), which entails
 C2W. Here is my process for the wumpus world problem, given the inital configuration in the handout:<br>
 1. Entail safe11 successfully (286 iterations)<br>
 2. Entail pit23 successfully (463 iterations)<br>
