@@ -47,17 +47,17 @@
 (or (not L3B) (not C3B))
 
 # if we observe something, it actually contains either of the other 2 (cant observe both)
-# e.g. O1Y -> C1W v C1B
+# e.g. O1Y -> C1Y v C1B
 # In CNF:
 # 1. Implication elimination: ¬O1Y v C1W v C1B
-(or (not O1Y) C1W C1B)
-(or (not O2Y) C2W C2B)
-(or (not O3Y) C3W C3B)
-(or (not O1W) C1Y C1B)
-(or (not O2W) C2Y C2B)
-(or (not O3W) C3Y C3B)
+(or (not O1Y) C1Y C1B)
+(or (not O2Y) C2Y C2B)
+(or (not O3Y) C3Y C3B)
+(or (not O1W) C1W C1B)
+(or (not O2W) C2W C2B)
+(or (not O3W) C3W C3B)
 
-# if we know what 2 boxes contain, then we know what the 3rd one contains (biconditional)
+# if we know what 2 boxes contain, then we know what the 3rd one contains
 # e.g. C1B ^ C3Y -> C2W
 # In CNF:
 # 1. Implication elimination: ¬(C1B ^ C3Y) v C2W
@@ -86,45 +86,6 @@
 (or (not C2B) (not C3Y) C1W)
 (or (not C2W) (not C3B) C1Y)
 (or (not C2B) (not C3W) C1Y)
-
-(or (not C3B) C1Y)
-(or (not C3B) C2W)
-(or (not C3B) C1W)
-(or (not C3B) C2Y)
-(or (not C3W) C1Y)
-(or (not C3W) C2B)
-(or (not C3W) C1B)
-(or (not C3W) C2Y)
-(or (not C3Y) C1B)
-(or (not C3Y) C2W)
-(or (not C3Y) C1W)
-(or (not C3Y) C2B)
-
-(or (not C2B) C1Y)
-(or (not C2B) C3W)
-(or (not C2B) C1W)
-(or (not C2B) C3Y)
-(or (not C2W) C1Y)
-(or (not C2W) C3B)
-(or (not C2W) C1B)
-(or (not C2W) C3Y)
-(or (not C2Y) C1B)
-(or (not C2Y) C3W)
-(or (not C2Y) C1W)
-(or (not C2Y) C3B)
-
-(or (not C1B) C2Y)
-(or (not C1B) C3W)
-(or (not C1B) C2W)
-(or (not C1B) C3Y)
-(or (not C1W) C2Y)
-(or (not C1W) C3B)
-(or (not C1W) C2B)
-(or (not C1W) C3Y)
-(or (not C1Y) C2B)
-(or (not C1Y) C3W)
-(or (not C1Y) C2W)
-(or (not C1Y) C3B)
 
 # facts for the specific sammys sport shop problem
 (or O1Y)
